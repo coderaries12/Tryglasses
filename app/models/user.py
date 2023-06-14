@@ -15,7 +15,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     products = db.relationship("Product", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
 
+    
     @property
     def password(self):
         return self.hashed_password
@@ -32,4 +34,10 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email
+        }
+
+    def to_dict_review_user(self):
+        return {
+            'id': self.id,
+            'username': self.username
         }

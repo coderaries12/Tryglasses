@@ -16,16 +16,26 @@ const ProductDetails = () => {
 
     return (
         <div>
-            <div><img src={product?.previewImage} /></div>
+            <div className="pd-container">
+                <img alt={product?.title} src={product?.previewImage} className="pd-mainimage" />
+            </div>
+            <div className="pd-subimage">
             {product?.images.map((image) => (
-                <div>
-                    <img src={image.image} />
-                </div>
+                
+                  <button className="image-button"><img src={image.image} /></button>
+                
             ) )}
-            <div>
-                <h2>{product?.title}</h2>
-                <h2>{product?.price}</h2>
-                <p>{product?.description}</p>
+            </div>
+            <div className="bottom-tabs-wrapper">
+                <div className="pd-bottom">
+                    <button className="bottom-tabs">Description</button>
+                    <button className="bottom-tabs">Frame & Measurements</button>
+                    <button className="bottom-tabs">Shipping & Returns</button>
+                    <div className="bottom-tabs-info">
+                        <span>{product.title}</span>
+                    </div>
+                    
+                </div>
             </div>
         </div>
         

@@ -24,7 +24,7 @@ class Product(db.Model):
 
     images = db.relationship("ProductImage", back_populates="product", cascade="all, delete-orphan")
     user = db.relationship("User", back_populates="products")
-    
+    reviews = db.relationship("Review", back_populates="product", cascade="all, delete-orphan")
     
 
     def to_dict(self):
@@ -41,6 +41,7 @@ class Product(db.Model):
             "previewImage": self.previewImage,
             "images": [image.to_dict() for image in self.images],
             "user": self.user.to_dict(),
+            "reviews": [review.to_dict() for review in self.reviews],
             "description": self.description,
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt

@@ -1,0 +1,78 @@
+.pd-container{
+    cursor: inherit;
+    width: 516px;
+    height: 258px;
+    position: relative;
+    user-select: none;
+}
+.pd-mainimage{
+    width: 516px;
+    height: 258px;
+    pointer-events: none;
+}
+.pd-subimage{
+    display: flex;
+    flex-direction: row;
+    
+    margin-top: 26px;
+    min-height: 48px;
+}
+.image-button{
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    height: 100px;
+    margin-right: 12px;
+    overflow: hidden;
+    transition: transform .3s linear,box-shadow .3s linear;
+    width: 148px
+}
+.pd-bottom{
+    display:flex;
+    flex-direction: row;
+    border-bottom: 1px solid #dbe1e5;
+    border:0;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    margin-bottom: 32px;
+    padding-right: 53px;
+}
+.bottom-tabs-wrapper{
+    padding-right: 25rem;
+    border-radius: 12px;
+    padding-top: 46px;
+    width:600px;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+.bottom-tabs{
+    border:none;
+    color: #89959c;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 12px 20px;
+}
+.bottom-tabs-info{
+    display:flex;
+    align-items: center;
+    background-color: #f7f8f9;
+    border-radius: 12px;
+    color: #3a4850;
+    display: flex;
+    flex-direction: row;
+    height: 240px;
+    justify-content: space-between;
+    padding: 36px 32px 36px 40px;
+}
