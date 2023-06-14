@@ -1,0 +1,14 @@
+.product-list-maincontainer{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10rem;
+    
+    
+}
+
+.product-image{
+    height:279px;
+    margin-right:30px;
+    width:290px;
+}

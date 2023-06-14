@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
 				</NavLink>
 			</li>
 			<li>
-				<NavLink exact to="/" style={{ textDecoration: "none" }}>Eyeglasses</NavLink>
+				<NavLink exact to="/products" style={{ textDecoration: "none" }}>Eyeglasses</NavLink>
 			</li>
 			<li>
 					<form>
