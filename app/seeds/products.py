@@ -43,7 +43,7 @@ def seed_products():
         previewImage = "https://img.ebdcdn.com/product/frame/gray/pm0402_0.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85",   
     )
     product4 = Product(
-        userId = 1,
+        userId = 2,
         title = "Good Vibrations",
         price = "42",
         size = "Large",
@@ -55,7 +55,7 @@ def seed_products():
         previewImage = "https://img.ebdcdn.com/product/frame/gray/smt7054_0.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85",   
     )
     product5 = Product(
-        userId = 1,
+        userId = 2,
         title = "St Michel Glasses",
         price = "35",
         size = "Small",
