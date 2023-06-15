@@ -5,6 +5,42 @@ from app.forms import ReviewForm
 
 product_routes = Blueprint('products', __name__)
 
+@product_routes.route('<int:productId>/reviews/<int:reviewId>', methods = ["PUT"])
+def update_review(productId, reviewId):
+    review = Review.query.get(reviewId)
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("review is ", review.reviewTitle, review.quality, review.fit, review.style, review.review, review.stars, review.reviewImage)
+    if form.validate_on_submit():
+        if form.data["reviewTitle"]:
+            review.reviewTitle = form.data["reviewTitle"]
+        if form.data["quality"]:
+            review.quality = form.data["quality"]
+        if form.data["fit"]:
+            review.fit = form.data["fit"]
+        if form.data["style"]:
+            review.style = form.data["style"]
+        if form.data["review"]:
+            review.review = form.data["review"]
+        if form.data["stars"]:
+            review.stars = form.data["stars"]
+        if form.data["reviewImage"]:
+            review.reviewImage = form.data["reviewImage"]
+        
+        db.session.commit()
+        return {'review': review.to_dict()}
+    else:
+        print(form.errors)
+        return "Testing"
+    
+@product_routes.route('<int:productId>/reviews/<int:reviewId>', methods = ["DELETE"])
+def delete_review(productId, reviewId):
+    review = Review.query.get(reviewId)
+    deleted_review = {'review': review.to_dict()}
+    db.session.delete(review)
+    db.session.commit()
+    return deleted_review
+
 
 @product_routes.route('<int:productId>/reviews',methods =['POST'])
 def create_review(productId):
