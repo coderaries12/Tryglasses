@@ -32,7 +32,7 @@ const ProductDetails = () => {
                     <button className="bottom-tabs">Frame & Measurements</button>
                     <button className="bottom-tabs">Shipping & Returns</button>
                     <div className="bottom-tabs-info">
-                        <span>{product.title}</span>
+                        <span>{product?.title}</span>
                     </div>
                     
                 </div>

@@ -9,5 +9,5 @@ class ReviewForm(FlaskForm):
     style = StringField("Style", validators=[DataRequired()])
     review = StringField("Review", validators=[DataRequired()])
     stars = IntegerField("Stars", validators=[DataRequired()])
-    url1 = URLField("Image1")
+    reviewImage = URLField("Image")
     submit = SubmitField("Submit")

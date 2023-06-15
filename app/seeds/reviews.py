@@ -16,7 +16,8 @@ def seed_reviews():
         fit = random.choice(fit),
         style = random.choice(style),
         review = "Love these glasses. I owed a different Muse model that was similar, but out of stock, so I ordered these and I am just as happy as with my previous pair.",
-        stars = randint(1, 5)
+        stars = randint(1, 5),
+        reviewImage = "https://optimaxweb.glassesusa.com/image/upload/c_fill,g_faces,f_auto,q_auto,w_126,h_126/ms/review/review/0/2200?w=126"
     )
     review2 = Review(
         productId = 2,
@@ -26,7 +27,9 @@ def seed_reviews():
         fit = random.choice(fit),
         style = random.choice(style),
         review = "I bought these glasses about 3weeks ago. Took about 2 weeks to get here. Not bad. But I love them. I will be ordering another pair this week. 1st time ever ordering from them. So Glad I Did! Don't hesitate to order you some. You want be disappointed. Glasses also look like picture.",
-        stars = randint(1, 5)
+        stars = randint(1, 5),
+        reviewImage = "https://optimaxweb.glassesusa.com/image/upload/c_fill,g_faces,f_auto,q_auto,w_126,h_126/ms/review/review/1679523542/17032?w=126"
+
     )
     all_reviews = [review1, review2 ]
     _ = [db.session.add(review) for review in all_reviews]

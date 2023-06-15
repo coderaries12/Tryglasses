@@ -16,10 +16,11 @@ class Review(db.Model):
     style = db.Column(db.String(100), nullable=False)
     review = db.Column(db.String(1000), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
+    reviewImage = db.Column(db.String, nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    images = db.relationship("ReviewImage", back_populates="review", cascade="all, delete-orphan")
+    # images = db.relationship("ReviewImage", back_populates="review", cascade="all, delete-orphan")
     user = db.relationship("User", back_populates="reviews")
     product = db.relationship("Product", back_populates="reviews")
 
@@ -41,7 +42,7 @@ class Review(db.Model):
             "style": self.style,
             "review": self.review,
             "stars": self.stars,
-            "images": [image.to_dict() for image in self.images],
+            "reviewImage" : self.reviewImage,
             "createdAt": self.formatted_createdAt(),
             "updatedAt": self.formatted_updatedAt()
         }
