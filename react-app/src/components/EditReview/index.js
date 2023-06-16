@@ -140,7 +140,7 @@ return (
                 </div>  
         </div> 
         <label for="itemquality">Quality:</label>
-        <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)}>
+        <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)} value={quality}>
             <option value=""> Choose Quality </option>
             <option value="low">Low</option>
             <option value="average">Average</option>
