@@ -5,11 +5,14 @@ import OpenModalButton from "../../components/OpenModalButton";
 import PostReviewModal from "../PostReviewModal";
 import EditReview from "../EditReview";
 import DeleteReview from "../DeleteReview";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "./productdetail.css"
+import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
+
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId]);
     const sessionUser = useSelector((state) => state.session.user);
@@ -48,6 +51,38 @@ const ProductDetails = () => {
     useEffect(() => {
         dispatch(fetchProducts());
       }, [dispatch]);
+
+      let value = 1;
+      const itemquantity = () => {
+        value = document.getElementById("itemquantity").value;
+        console.log("value:", value);
+      };
+    
+      const addToCart = async () => {
+        let checkproduct;
+    
+        if (!sessionUser) {
+          window.alert("Please log in first");
+        } else {
+          console.log("checkproduct:", sessionUser);
+          checkproduct = sessionUser.cart_session.cart.find(
+            (ele) => ele.productId == product.id
+          );
+    
+        if (!checkproduct) {
+            await dispatch(thunkAddToCart(sessionUser, product, value))
+            history.push("/shoppingcart")
+        } else if (checkproduct) {
+            value = parseInt(parseInt(value) + checkproduct.quantity);
+            let cartId = checkproduct.id;
+            console.log("valuesssss:", value);
+            dispatch(thunkUpdateCart(sessionUser, cartId, product, value)).then(
+              history.push("/shoppingcart")
+            );
+        }
+        }
+      };
+    
 
     return (
         <div className="product-single">
@@ -170,8 +205,31 @@ const ProductDetails = () => {
             <div>Size: {product?.size}</div>
             <div><button>Free shipping & returns</button></div>
             <div><button>100% money-back guarantee</button></div>
+        <div className="add-to-cart">
+            <div>
+              <label>Quantity</label>
+            </div>
+            <select
+              name="quantity"
+              placeholder="Quantity"
+              id="itemquantity"
+              onChange={itemquantity}
+            >
+              {/* <option value="" disabled selected>Select quantity</option> */}
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <div className="cart-button">
+              <button onClick={addToCart} className="add-to-cart-button">
+                Add to Cart
+              </button>
+            </div>
+        </div>
             <div><button>Add to Favorites</button></div>
-            <div><button>Add to Cart</button></div> 
+            
           </div>
         </div>
         

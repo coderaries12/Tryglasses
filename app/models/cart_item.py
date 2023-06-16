@@ -23,6 +23,7 @@ class CartItem(db.Model):
             "sessionId": self.sessionId,
             "productId": self.productId,
             "quantity": self.quantity,
+            "product": self.product.to_dict_favorites(),
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
        }

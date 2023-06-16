@@ -10,6 +10,7 @@ import ProductDetails from "./components/ProductDetails";
 import EditReview from "./components/EditReview";
 import PostReviewModal from "./components/PostReviewModal";
 import HomePage from "./components/HomePage";
+import ShoppingCartPage from "./components/ShoppingCartPage";
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/" >
             <HomePage />
+          </Route>
+          <Route exact path="/shoppingcart" >
+            <ShoppingCartPage />
           </Route>
           <Route exact path="/products">
             <ProductList />
