@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const sessionUser = useSelector((state) => state.session.user);
 
     console.log("product detail component", product?.reviews.length)
-
+    
     const reviewAvg = () => {
         let totalStars = 0;
         product.reviews.forEach((review) => {
@@ -51,7 +51,8 @@ const ProductDetails = () => {
 
     return (
         <div className="product-single">
-            <div className="pd-container">
+            <div className="product-container">
+            <div className="pd-rightcontainer">
                 <img alt={product?.title} src={product?.previewImage} className="pd-mainimage" />
             </div>
             <div className="pd-subimage">
@@ -161,6 +162,17 @@ const ProductDetails = () => {
                          
                 </div>
                 ): (<div>Be the first to post a review!</div>)}
+            </div>
+          <div className="right-side-container">
+            <h1>{product?.title}</h1>
+            <div>{reviewExists && reviewAvg()}⭐({reviewsLength()})</div>
+            <div>${product?.price}</div>
+            <div>Size: {product?.size}</div>
+            <div><button>Free shipping & returns</button></div>
+            <div><button>100% money-back guarantee</button></div>
+            <div><button>Add to Favorites</button></div>
+            <div><button>Add to Cart</button></div> 
+          </div>
         </div>
         
     )

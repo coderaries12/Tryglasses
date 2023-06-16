@@ -38,15 +38,15 @@ function Navigation({ isLoaded }){
 						</button>
 					</form>
 				</li>
-				<li>
-						<NavLink exact to= "" style={{ textDecoration: "none" }}>
-							Favorites
-						</NavLink>
+				<li className={sessionUser? '':'hidden'}>
+					<NavLink exact to= "/favorites">
+        				<i className="fa-regular fa-heart fa-xl" />
+      				</NavLink>
 				</li>
 				<li>
-						<NavLink exact to= "" style={{ textDecoration: "none" }}>
-							Shopping Cart
-						</NavLink>
+					<NavLink exact to= "/shoppingcart">
+						<i className="fa-solid fa-cart-shopping fa-lg" />
+					</NavLink>
 				</li>
 				{isLoaded && (
 					<li>

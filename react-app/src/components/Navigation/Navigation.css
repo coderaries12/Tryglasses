@@ -9,6 +9,16 @@
 ul{
   list-style-type: none;
 }
+.navigation button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.profile-dropdown .signout-button {
+  padding-top: 10px;
+  font-size: 16px;
+  font-family: cursive;
+}
 
 .headerContainer  {
   display: flex;
@@ -23,16 +33,26 @@ ul{
   top: 0;
   background-color: white;
 }
+/* ul.navigation{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0 15px 0;
+  gap:12rem;
+} */
 
 .navigation {
   display: grid;
-  grid-template-columns: 2fr 8fr 1fr 1fr 1fr 1fr; 
+  grid-template-columns: 2fr 4fr 2fr 1fr 1fr 1fr; 
+  grid-gap:3rem; 
   border-bottom: solid 2px rgb(222, 219, 219);
   justify-content: space-between;
   align-items: center;
   width: auto;
   margin: 0;
   padding: 10px 0 15px 0;
+
+  
 }
 .top-strip-container{
   padding: 0 16px 0 60px; 
@@ -54,12 +74,12 @@ ul{
   gap:8rem;
 }
 .menu-container{
-  align-items: center;
-    box-sizing: border-box;
+    align-items: center;
+    /* box-sizing: border-box; */
     display: flex;
     height: 100%;
-    margin: auto;
-    padding: 0 21px 0 26px;
+    margin: 0;
+    /* padding: 0 10px 0 26px; */
 }
 .promotion-item-container{
   display:flex;
@@ -72,15 +92,10 @@ ul{
 
   /* margin-bottom: 10rem; */
 }
-.navbar-image-below{
-  display: flex;
-  
-  justify-content: space-between;
-  gap:6rem;
-}
+
 
  
-/* .navigation form {
+.navigation form {
   border: solid  rgb(120, 120, 120) 2px;
   border-radius: 25px;
   width: 98%;
@@ -89,4 +104,13 @@ ul{
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-} */
+}
+.navigation input {
+  border: none;
+  width: 95%;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.navigation input:focus {
+  outline: none;
+}
