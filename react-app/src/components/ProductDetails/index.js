@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../../store/products";
 import OpenModalButton from "../../components/OpenModalButton";
-
-import { useHistory, Link, useParams } from "react-router-dom";
+import PostReviewModal from "../PostReviewModal";
+import EditReview from "../EditReview";
+import DeleteReview from "../DeleteReview";
+import { useParams } from "react-router-dom";
 import "./productdetail.css"
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId]);
     const sessionUser = useSelector((state) => state.session.user);
@@ -56,7 +57,7 @@ const ProductDetails = () => {
             <div className="pd-subimage">
             {product?.images.map((image) => (
                 
-                  <button className="image-button"><img src={image.image} /></button>
+                  <button className="image-button"><img src={image.image} alt={product?.title} /></button>
                 
             ) )}
             </div>
@@ -82,7 +83,7 @@ const ProductDetails = () => {
                                     </ul>
                                 </div>
                                 <div>
-                                    <img src={product?.previewImage} width="120px" height="100px" />
+                                    <img src={product?.previewImage} alt={product?.title} width="120px" height="100px" />
                                 </div>
                         </div>
                 </div>    
@@ -98,7 +99,7 @@ const ProductDetails = () => {
                     !reviewExists && (
                     <OpenModalButton
                     buttonText="Post Review"
-                    // modalComponent={<PostReviewModal productId={productId} />}
+                    modalComponent={<PostReviewModal product={product} />}
                     />  
                     )}
                 </div>    
@@ -118,14 +119,37 @@ const ProductDetails = () => {
                                 <ul>
                                     <li>{r.reviewTitle}</li>
                                     <li>{r.review} </li>
-                                    <li>{r.createdAt}</li>
+                                    
                                 <div>
-                                    <li>{r.style}</li>
-                                    <li>{r.fit}</li>
-                                    <li>{r.quality}</li>
+                                    <span>{r.style}</span>
+                                    <span>{r.fit}</span>
+                                    <span>{r.quality}</span>
                                 </div>
-                                <img src={r.reviewImage} />
+                                <img src={r.reviewImage} alt={product?.title} />
                                 </ul>
+                                </div>
+                                <div className="edit-delete-modal">
+                                  {sessionUser && r?.userId === sessionUser.id && (
+                                <div className="review-btn">
+                                        <OpenModalButton
+                                        buttonText="Edit Review"
+                                        modalComponent={
+                                            <EditReview product={product} review={r} />
+                                        }
+                                        />
+                                        <OpenModalButton
+                                        buttonText="Delete Review"
+                                        modalComponent={
+                                            <DeleteReview
+                                            productId={productId}
+                                            reviewId={r.id}
+                                            />
+                                        }
+                                        />
+                                </div>
+                )
+
+                                  }  
                                 </div>
                              
                             </div>

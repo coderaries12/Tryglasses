@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
+import EditReview from "./components/EditReview";
+import PostReviewModal from "./components/PostReviewModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +34,13 @@ function App() {
           <Route exact path="/products/:productId">
             <ProductDetails />
           </Route>
+          <Route exact path="/products/:productId/review" >
+            <PostReviewModal />
+          </Route>
+          <Route exact path="/products/:productId/review/:reviewId/edit" >
+            <EditReview />
+          </Route>
+          
         </Switch>
       )}
     </>

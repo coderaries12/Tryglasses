@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchProducts } from "../../store/products";
@@ -6,9 +6,9 @@ import "./product_list.css";
 
 const ProductList = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const products = Object.values(useSelector((state) => state.products));
-    console.log(products)
+    
 
     useEffect(() => {
         dispatch(fetchProducts());
