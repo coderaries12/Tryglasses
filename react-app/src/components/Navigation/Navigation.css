@@ -30,19 +30,20 @@ ul{
   border-bottom: solid 2px rgb(222, 219, 219);
   justify-content: space-between;
   align-items: center;
-  width: 95%;
+  width: auto;
   margin: 0;
   padding: 10px 0 15px 0;
 }
 .top-strip-container{
-  padding: 0 16px 0 60px;
+  padding: 0 16px 0 60px; 
   /* border:solid black 1px; */
   font-family: Roboto,Arial,sans-serif;
   font-size: 13px;
   height: 100%;
+  width:100%;
   background-color: black;
-  margin: auto;
-  box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box; 
 }
 .top-strip-container > ul{
   display:flex;

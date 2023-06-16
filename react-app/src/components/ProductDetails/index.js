@@ -125,7 +125,10 @@ const ProductDetails = () => {
                                     <span>{r.fit}</span>
                                     <span>{r.quality}</span>
                                 </div>
+                                <div key={r.id} className={r.reviewImage ? "" : "hidden"}>
                                 <img src={r.reviewImage} alt={product?.title} />
+                                </div>
+                                
                                 </ul>
                                 </div>
                                 <div className="edit-delete-modal">

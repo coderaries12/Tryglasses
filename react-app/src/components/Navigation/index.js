@@ -31,10 +31,12 @@ function Navigation({ isLoaded }){
 					<NavLink exact to="/products" style={{ textDecoration: "none" }}>Eyeglasses</NavLink>
 				</li>
 				<li>
-						<form>
-							<input type='search' placeholder='Search for anything' ></input>
-							
-						</form>
+					<form>
+						<input type='search' placeholder='Search for anything' ></input>
+						<button disabled="True">
+							<i className="fa-solid fa-magnifying-glass fa-xl" />
+						</button>
+					</form>
 				</li>
 				<li>
 						<NavLink exact to= "" style={{ textDecoration: "none" }}>
@@ -53,17 +55,7 @@ function Navigation({ isLoaded }){
 				)}	 
 			</ul>
 		</div>
-		<div className='promotion-item-container'>
-        <img className='main-page-image' src="https://www.usatoday.com/gcdn/presto/2020/09/23/USAT/92bade01-0f1a-4161-90ba-0c82496e3455-43-glassesusa.png"></img>
-        </div>
-		<div className='navbar-image-below'>
-			<p className='text'>Free Shipping & Returns | 
-									100% Money Back Guarantee |
-									FSA/HSA Eligible |
-								    Trustpilot rating |
-									Excellent 
-			</p>	
-		</div>
+		
 	</div>
 	)
 }

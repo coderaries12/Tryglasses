@@ -56,7 +56,7 @@ const PostReviewModal = ({ product }) => {
             <img src={product.previewImage} alt={product?.title} width="100px" height="80px"></img>
         </div>
     </div>
-    <form>
+    <form onSubmit={handleSubmit}>
         <div className="review-stars">
                 <h4> How would you rate your glasses? </h4>
                 <h4 className="formErrors">{errors?.stars}</h4>
@@ -168,10 +168,10 @@ const PostReviewModal = ({ product }) => {
             accept=".png,.jpg,.jpeg,.gif"
             placeholder='Add Photo'
             value={reviewImage}
-            onChange={(e) => setReviewImage(e.target.value)} required />
+            onChange={(e) => setReviewImage(e.target.value)} />
     <div>
         <button
-          className="createbutton-product" type="submit" onSubmit={handleSubmit} disabled={!!Object.values(errors).length}>
+          className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
           Share your thoughts
         </button>
       </div>   
