@@ -1,48 +1,101 @@
-.slider {
-    width: 500px;
-    height: 300px;
-    background-color: yellow;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .image-container {
-    width: 1500px;
-    background-color: pink;
-    height: 300px;
-    clear: both;
-    position: relative;
-    -webkit-transition: left 2s;
-    -moz-transition: left 2s;
-    -o-transition: left 2s;
-    transition: left 2s;
-  }
-  .slide {
-    float: left;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-  }
-  #slide-1:target ~ .image-container {
-    left: 0px;
-  }
-  #slide-2:target ~ .image-container {
-    left: -500px;
-  }
-  #slide-3:target ~ .image-container {
-    left: -1000px;
-  }
-  .buttons {
-    position: relative;
-    top: -20px;
-  }
-  .buttons a {
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-    border-radius: 50px;
-    background-color: lightgreen;
-  }
+ul.thumbs.animated {
+    display: none;
+}
+div.axis-horizontal.slider-wrapper{
+    height:520px;
+}
+ul.control-dots{
+    display:none
+}
+button.control-arrow.control-next{
+    color:black;
+}
+p.carousel-status{
+    display:none;
+}
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid black;
+    
+}
+.carousel .control-prev.control-arrow:before {
+    border-right: 8px solid black;
+}
+.carousel-image{
+    background-size: cover;
+}
+div.carousel-root{
+    height:520px;
+}
 
+
+
+.bottom-strip-container{
+        padding: 0 16px 0 60px; 
+        border:solid #d7ebfb 1px; 
+        background-color:#e7f4fe;
+        font-family: inherit;
+        font-size: 13px;
+        height: 100%;
+        width:100%;
+        margin: 0;
+        box-sizing: border-box; 
+    }
+  .bottom-strip-container > ul{
+        display:flex;
+        text-align: center;
+        padding-top:0px;
+        padding:0.5rem; 
+        flex-direction: row; 
+        color:black;
+        gap:2rem;
+        /* margin:0px; */
+        
+      }
+    .bottom-strip-container > ul > li{
+        border-right: solid black 1px;
+        padding-right:7rem;
+      }
+.fa-solid.fa-star{
+    color:green;
+    } 
+    .brand-strip-container{
+        padding: 0 16px 0 60px; 
+        font-family: inherit;
+        font-size: 13px;
+        height: 100%;
+        width:100%;
+        margin: 0;
+        box-sizing: border-box;   
+    }
+    .brand-strip-container > ul{
+        
+        display:flex;
+        text-align: center;
+        padding:0.5rem;
+        flex-direction: row; 
+        gap:7rem; 
+      }
+    .brand-strip-container > ul > li{
+        border:solid #6d6d6d 2px;
+        border-radius: 70px;
+        padding:0 16px;
+    }
+    .p1 {
+        display: block;
+        font-family: inherit;
+        font-size: 28px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        text-align: center;
+        margin:60px 0px 8px;
+        
+    }
+    .p2{
+        text-align: center;
+        font-family:inherit;
+        font-size: 20px;
+
+    }
+  

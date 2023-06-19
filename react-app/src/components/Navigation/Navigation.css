@@ -2,12 +2,42 @@
 .profile-dropdown {
   position: absolute;
 }
+.login-logout-modal{
+  display:flex;
+  font:inherit;
+  flex-direction: column;
+  align-items: center;
+  gap:2rem;
+  justify-content: space-between;
+  border: 1px rgb(159, 157, 157) solid;
+  padding:2rem;
+  border-radius: 4px;
+}
+
+
+
+.logged-in-profile {
+  display: flex;
+  border:solid red 1px;
+  flex-direction: column;
+  /* position: absolute; */
+  border: 1px rgb(159, 157, 157) solid;
+  background-color: white;
+  margin-top: 5px;
+  padding: 2px 6px 2px 8px; 
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-right: 50px;
+}
+
 
 .hidden {
   display: none;
 }
 ul{
   list-style-type: none;
+  color:black;
 }
 .navigation button {
   background-color: transparent;
@@ -17,7 +47,7 @@ ul{
 .profile-dropdown .signout-button {
   padding-top: 10px;
   font-size: 16px;
-  font-family: cursive;
+  font-family: inherit;
 }
 
 .headerContainer  {
@@ -42,22 +72,28 @@ ul{
 } */
 
 .navigation {
-  display: grid;
-  grid-template-columns: 2fr 4fr 2fr 1fr 1fr 1fr; 
-  grid-gap:3rem; 
+  /* display: flex;
+  flex-direction: row; */
+  display:grid;
+  grid-template-columns: 2fr 10fr 8fr 2fr 2fr 2fr; 
+  font-family: inherit;
+  color:black;
+  grid-gap:8.5rem;     
   border-bottom: solid 2px rgb(222, 219, 219);
   justify-content: space-between;
-  align-items: center;
-  width: auto;
+   align-items:center; 
+  width: 100%;
   margin: 0;
-  padding: 10px 0 15px 0;
-
-  
+  /* gap:12.5rem; */
+  padding: 10px 0 15px 0; 
+}
+.nologin {
+  grid-template-columns: 4fr 20fr 10fr 2fr 2fr;
 }
 .top-strip-container{
   padding: 0 16px 0 60px; 
   /* border:solid black 1px; */
-  font-family: Roboto,Arial,sans-serif;
+  font-family: inherit;
   font-size: 13px;
   height: 100%;
   width:100%;
@@ -68,7 +104,7 @@ ul{
 .top-strip-container > ul{
   display:flex;
   text-align: center;
-  padding:0.7rem;
+  padding:0.5rem;
   flex-direction: row; 
   color:white;
   gap:8rem;
@@ -96,6 +132,7 @@ ul{
 
  
 .navigation form {
+  font-family: inherit;
   border: solid  rgb(120, 120, 120) 2px;
   border-radius: 25px;
   width: 98%;
@@ -106,6 +143,7 @@ ul{
   padding: 10px;
 }
 .navigation input {
+  font-family: inherit;
   border: none;
   width: 95%;
   font-size: 16px;
@@ -114,3 +152,7 @@ ul{
 .navigation input:focus {
   outline: none;
 }
+/* .fa-thin.fa-wheelchair{
+  color:white;
+  font-size: large;
+} */

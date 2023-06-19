@@ -1,0 +1,54 @@
+.footer {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e7f4fe;
+    border-top: solid 2px rgb(222, 219, 219);
+    color: rgb(119, 114, 114);
+    margin-top: 8rem;
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap:10rem;
+    /* grid-template-columns: 1fr; */
+    max-width: fit-content;
+    margin-top: 5px;
+}
+
+.footer h3{
+    padding: 15px 0;
+}
+.made-with{
+    margin-top: 1em; 
+}
+
+
+.madeIcons i {
+    font-size: 30px;
+    padding: 3px 5px 
+}
+
+.about p{
+    padding: 10px;
+    color: rgb(119, 114, 114);
+
+}
+
+.about i{
+    padding: 0 15px;
+    font-size: 28px;
+    color: rgb(119, 114, 114);
+}
+
+.about-grid-one {
+    padding-left: 80px;
+}
+
+.fa-regular.fa-copyright {
+    color: rgb(119, 114, 114);
+    font-size: 15px;
+}

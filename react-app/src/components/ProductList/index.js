@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { fetchProducts } from "../../store/products";
 import "./product_list.css";
 
@@ -16,8 +16,11 @@ const ProductList = () => {
 
     return (
       <div className="product-list-maincontainer">
+        
         {products?.map((product) => (
-              <div key={product.id}>
+          
+              <div className="tooltip-container" key={product.id}>
+                <div className="product-list-heart"><i className="fa-regular fa-heart fa-xl" /></div>
                 <div className="product-list-subcontainer">
                   <NavLink to={`/products/${product.id}`}>
                     <img
@@ -26,10 +29,11 @@ const ProductList = () => {
                       alt="products"
                     />
                     <div className="title">{product.title}</div>
-                    <div className="price">$ {product.price.toFixed(2)}</div>
+                    <div className="price">${product.price.toFixed(2)} Including lenses</div>
                   </NavLink>
                   
                 </div>
+              <div className="tooltip-div"><Link to={`/products/${product.id}`} className="tool-tip" >See Frame</Link></div>
               </div>
             ))}
       </div>

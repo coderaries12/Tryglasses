@@ -11,6 +11,7 @@ import EditReview from "./components/EditReview";
 import PostReviewModal from "./components/PostReviewModal";
 import HomePage from "./components/HomePage";
 import ShoppingCartPage from "./components/ShoppingCartPage";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -52,6 +53,10 @@ function App() {
           
         </Switch>
       )}
+      
+      <div className="footer-container">
+        <Footer isLoaded={isLoaded} />
+      </div>
     </>
   );
 }

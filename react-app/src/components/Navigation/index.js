@@ -15,14 +15,14 @@ function Navigation({ isLoaded }){
 				<li>100% Money-Back Guarantee + 365 Day Warranty</li>
 				<li>1-844-244-1186</li>
 				<li>Every day 7am - midnight ET</li>
-				<li><i className="fa-thin fa-wheelchair"></i></li>
+				<li><i class="fa-solid fa-wheelchair fa-xl"></i></li>
 				<li>Help</li>
 				<li>Welcome, {sessionUser?.username}</li>
 			</ul>
 		</div>
 		<div className='menu-container'>
-			<ul className='navigation'>
-				<li>
+			<ul className={sessionUser? 'navigation': 'navigation nologin'}>
+				<li id="logo">
 					<NavLink exact to="/" style={{ textDecoration: "none" }}>
 						Logo
 					</NavLink>
@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
 				</li>
 				<li>
 					<form>
-						<input type='search' placeholder='Search for anything' ></input>
+						<input type='search' placeholder="I'm Searching For..." ></input>
 						<button disabled="True">
 							<i className="fa-solid fa-magnifying-glass fa-xl" />
 						</button>
@@ -43,16 +43,16 @@ function Navigation({ isLoaded }){
         				<i className="fa-regular fa-heart fa-xl" />
       				</NavLink>
 				</li>
-				<li>
-					<NavLink exact to= "/shoppingcart">
-						<i className="fa-solid fa-cart-shopping fa-lg" />
-					</NavLink>
-				</li>
 				{isLoaded && (
 					<li>
 						<ProfileButton user={sessionUser} />
 					</li>
-				)}	 
+				)}	
+				<li>
+					<NavLink exact to= "/shoppingcart">
+						<i className="fa-solid fa-cart-shopping fa-lg" />
+					</NavLink>
+				</li> 
 			</ul>
 		</div>
 		
