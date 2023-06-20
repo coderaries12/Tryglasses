@@ -14,7 +14,7 @@ const PostReviewModal = ({ product }) => {
   const [fit, setFit] = useState("");
   const [style, setStyle] = useState("");
   const [review, setReview] = useState("");
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(1);
   const [reviewImage, setReviewImage] = useState("");
 
   const [errors, setErrors] = useState({});
@@ -26,6 +26,8 @@ const PostReviewModal = ({ product }) => {
         errors.stars = "Stars must be between 1 and 5";
       }
     setErrors(errors);
+    if (review.length === 0 )
+    errors.review = "Review required"
   }, [reviewTitle, quality, fit, style, review, stars, reviewImage]);
 
   const handleSubmit = async (e) => {
@@ -48,7 +50,7 @@ const PostReviewModal = ({ product }) => {
  }
 
   return(
-  <div>
+  <div className="review-modal">
     <h1>Add a Review</h1>
     <div>
         <div>
@@ -121,6 +123,8 @@ const PostReviewModal = ({ product }) => {
                             ></i>    
                 </div>  
         </div> 
+        <div className="quality-fit-style-div">
+        <div>
         <label for="itemquality">Quality:</label>
         <h4 className="formErrors">{errors?.quality}</h4>
         <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)} required>
@@ -129,6 +133,8 @@ const PostReviewModal = ({ product }) => {
             <option value="average">Average</option>
             <option value="high">High</option>    
         </select>
+        </div>
+        <div>
         <label for="itemfit"> Fit:</label>
         <h4 className="formErrors">{errors?.fit}</h4>
         <select name="fit" id="itemfit" onChange={(e) => setFit(e.target.value)} required>
@@ -137,6 +143,8 @@ const PostReviewModal = ({ product }) => {
             <option value="truetosize">True to size</option>
             <option value="tight">Tight</option>    
         </select>
+        </div>
+        <div>
         <label for="itemstyle"> Style:</label>
         <h4 className="formErrors">{errors?.style}</h4>
         <select name="style" id="itemstyle" onChange={(e) => setStyle(e.target.value)} required>
@@ -145,23 +153,30 @@ const PostReviewModal = ({ product }) => {
             <option value="vintage">Vintage</option>
             <option value="classic">Classic</option>    
         </select>
-        <br></br>
+        </div>
+        </div>
+        <div>
         <label>Give your review a title </label>
           <h4 className="formErrors">{errors?.reviewTitle}</h4>
           <input
             placeholder='e.g.Love this Frame'
             value={reviewTitle}
+            minLength="5"
             onChange={(e) => setReviewTitle(e.target.value)} required />
-        <br></br>
+        </div>
+        <div>
         <label> Your Review </label>
           <h4 className="formErrors">{errors?.review}</h4>
           <textarea
             rows="8"
             cols="45"
+            minLength="10"
+            style={{resize:"none"}}
             placeholder='e.g.I bought this frame two weeks ago and I am so happy'
             value={review}
             onChange={(e) => setReview(e.target.value)} required />
-        <br></br>
+        </div>
+        <div>
         <label> Don't be shy, share Upload picture of you in your new glasses</label>
           <input
             type="url"
@@ -169,6 +184,7 @@ const PostReviewModal = ({ product }) => {
             placeholder='Add Photo'
             value={reviewImage}
             onChange={(e) => setReviewImage(e.target.value)} />
+            </div>
     <div>
         <button
           className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>

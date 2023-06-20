@@ -1,29 +1,29 @@
-ul.thumbs.animated {
+#carousel-wrapper ul.thumbs.animated {
     display: none;
 }
-div.axis-horizontal.slider-wrapper{
+#carousel-wrapper div.axis-horizontal.slider-wrapper{
     height:520px;
 }
-ul.control-dots{
+#carousel-wrapper ul.control-dots{
     display:none
 }
-button.control-arrow.control-next{
+#carousel-wrapper button.control-arrow.control-next{
     color:black;
 }
-p.carousel-status{
+#carousel-wrapper p.carousel-status{
     display:none;
 }
-.carousel .control-next.control-arrow:before {
+#carousel-wrapper .control-next.control-arrow:before {
     border-left: 8px solid black;
     
 }
-.carousel .control-prev.control-arrow:before {
+#carousel-wrapper .control-prev.control-arrow:before {
     border-right: 8px solid black;
 }
-.carousel-image{
+#carousel-wrapper .carousel-image{
     background-size: cover;
 }
-div.carousel-root{
+#carousel-wrapper div.carousel-root{
     height:520px;
 }
 

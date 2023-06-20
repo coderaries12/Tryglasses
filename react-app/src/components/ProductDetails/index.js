@@ -6,7 +6,7 @@ import PostReviewModal from "../PostReviewModal";
 import EditReview from "../EditReview";
 import DeleteReview from "../DeleteReview";
 import { useParams, useHistory } from "react-router-dom";
-// import ImageCarousel from "./ImageCarousel";
+import ImageCarousel from "./ImageCarousel";
 import "./productdetail.css"
 import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
 
@@ -88,18 +88,11 @@ const ProductDetails = () => {
     return (
         <div className="product-single">
             <div className="product-container">
+              <div>
+                <ImageCarousel />
+              </div>
             
-            {<div className="pd-rightcontainer">
-                <img alt={product?.title} src={product?.previewImage} className="pd-mainimage" />
-            </div> }
-
-            <div className="pd-subimage">
-            {product?.images.map((image) => (
-                
-                  <button className="image-button"><img src={image.image} alt={product?.title} /></button>
-                
-            ) )}
-            </div> 
+        
             <div className="bottom-tabs-wrapper">
                 <div className="pd-bottom">
                     <button className="bottom-tabs">Description</button>
@@ -128,15 +121,8 @@ const ProductDetails = () => {
                                 </div>        
                         </div>
                         <div className="shipping-returns">
-                            <div className="shipping-part1">
                                 <h2>Shipping & Returns:</h2>
-                                <h4>Enjoy Free Shipping and returns on all orders</h4>
-                                <p>For orders in the US & Canada. If, for any reason, you are not completely satisfied with your order, you may return it within the first 14 days for free. *US & Canada orders only. Limitations apply.</p>
-                            </div>
-                            <div className="shipping-part2">
-                                <h4>Please note</h4>
-                                <p>Production requires additional time for Single vision - 3 business days, Multifocal - 6 business days.</p>
-                            </div>
+                                <p>Enjoy Free Shipping and returns on all orders</p>        
                         </div>
                 </div>    
             </div>
@@ -179,8 +165,8 @@ const ProductDetails = () => {
                                     <span>Fit: {r.fit}</span>
                                     <span>Quality: {r.quality}</span>
                                 </div>
-                                <div key={r.id} className={r.reviewImage ? "" : "hidden"}>
-                                <img src={r.reviewImage} alt={product?.title} />
+                                <div style={{width:"125px" , height:"125px"}}key={r.id} className={r.reviewImage ? "" : "hidden"}>
+                                <img style={{width:"100%", objectFit:"cover"}} src={r.reviewImage} alt={product?.title} />
                                 </div>
                                 
                                 </ul>
@@ -219,15 +205,15 @@ const ProductDetails = () => {
             </div>
           <div className="right-side-container">
             <h1>{product?.title}</h1>
-            <div>{reviewExists && reviewAvg()}⭐({reviewsLength()})</div>
-            <div>${product?.price}</div>
-            <div>Size: {product?.size}</div>
+            <div className="star-right-side-container">{reviewExists && reviewAvg()}⭐({reviewsLength()})</div>
+            <div className="price-detail">Price: ${product?.price}</div>
+            <div className="size-detail">Size: {product?.size}</div>
             <div className="right-ship-return"><button>Free shipping & returns</button></div>
             <div className="right-ship-return"><button>100% money-back guarantee</button></div>
         <div className="add-to-cart">
-            <div>
+            
               <label>Quantity</label>
-            </div>
+            
             <select
               name="quantity"
               placeholder="Quantity"
@@ -245,9 +231,10 @@ const ProductDetails = () => {
               <button onClick={addToCart} className="add-to-cart-button">
                 Add to Cart
               </button>
+              <button id="add-favorites-button">Add to Favorites</button>
             </div>
         </div>
-            <div className="cart-button"><button>Add to Favorites</button></div>
+            
             
         </div>
         </div>

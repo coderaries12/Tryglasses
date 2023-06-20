@@ -66,7 +66,7 @@ const handleSubmit = async(e) => {
     closeModal()
 }
 return (
-    <div>
+    <div className="review-modal">
     <h1>Edit a Review</h1>
     <div>
         <div>
@@ -139,6 +139,8 @@ return (
                             ></i>    
                 </div>  
         </div> 
+        <div className="quality-fit-style-div">
+        <div>
         <label for="itemquality">Quality:</label>
         <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)} value={quality}>
             <option value=""> Choose Quality </option>
@@ -146,37 +148,46 @@ return (
             <option value="average">Average</option>
             <option value="high">High</option>    
         </select>
+        </div>
+        <div>
         <label for="itemfit"> Fit:</label>
-        <select name="fit" id="itemfit" onChange={(e) => setFit(e.target.value)}>
+        <select name="fit" id="itemfit" onChange={(e) => setFit(e.target.value)} value={fit}>
             <option value=""> Choose Fit </option>
             <option value="loose">Loose</option>
             <option value="truetosize">True to size</option>
             <option value="tight">Tight</option>    
         </select>
+        </div>
+        <div>
         <label for="itemstyle"> Style:</label>
-        <select name="style" id="itemstyle" onChange={(e) => setStyle(e.target.value)}>
+        <select name="style" id="itemstyle" onChange={(e) => setStyle(e.target.value)} value={style}>
             <option value=""> Choose Style </option>
             <option value="chic">Chic</option>
             <option value="vintage">Vintage</option>
             <option value="classic">Classic</option>    
         </select>
-        <br></br>
+        </div>
+        </div>
+        <div>
         <label>Give your review a title </label>
+
           <h4 className="formErrors">{errors?.reviewTitle}</h4>
           <input
             placeholder='e.g.Love this Frame'
             value={reviewTitle}
             onChange={(e) => setReviewTitle(e.target.value)}/>
-        <br></br>
+        </div>
+        <div>
         <label> Your Review </label>
           <h4 className="formErrors">{errors?.review}</h4>
           <textarea
             rows="8"
-            cols="45"
+            cols="40"
             placeholder='e.g.I bought this frame two weeks ago and I am so happy'
             value={reviews}
             onChange={(e) => setReviews(e.target.value)}/>
-        <br></br>
+        </div>
+        <div>
         <label> Don't be shy, Upload  edit picture of you in new glasses</label>
           <input
             type="url"
@@ -184,6 +195,7 @@ return (
             placeholder='Add Photo'
             value={reviewImage}
             onChange={(e) => setReviewImage(e.target.value)}/>
+        </div>
     <div>
         <button
           className="createbutton-product"

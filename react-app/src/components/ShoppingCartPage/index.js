@@ -14,12 +14,12 @@ const ShoppingCartPage = () => {
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     
-    let title;
-    if (sessionUser) {
-        title = `${sessionUser.username}'s Shopping Cart`
-    }else {
-        history.push("/")
-    }
+    // let title;
+    // if (sessionUser) {
+    //     title = `${sessionUser.username}'s Shopping Cart`
+    // }else {
+    //     history.push("/")
+    // }
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -34,7 +34,7 @@ const ShoppingCartPage = () => {
     return (
         <div className="bodyContainer">
           <div className="cartpage">
-            <h1>{title}</h1>
+            <h1>Shopping Cart</h1>
             <div className="product-in-cartpage">
               {sessionUser?.cart_session?.cart.map((ele) => (
                 <div key={ele.product.id} className="item-in-shop">
@@ -77,7 +77,7 @@ const ShoppingCartPage = () => {
               </h2>
               <div className={sessionUser?.cart_session?.cart.length >= 1? "hidden":""}>
                 <NavLink exact to="/" >
-                  Discover something unique to fill it up
+                  Continue Shopping
                 </NavLink>
               </div >
             </div>

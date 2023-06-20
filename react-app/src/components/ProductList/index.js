@@ -20,14 +20,17 @@ const ProductList = () => {
         {products?.map((product) => (
           
               <div className="tooltip-container" key={product.id}>
-                <div className="product-list-heart"><i className="fa-regular fa-heart fa-xl" /></div>
+                
                 <div className="product-list-subcontainer">
+                
                   <NavLink to={`/products/${product.id}`}>
+                  
                     <img
                       className="product-image"
                       src={product.previewImage}
                       alt="products"
                     />
+                    <div className="product-list-heart"><i className="fa-regular fa-heart fa-xl" /></div>
                     <div className="title">{product.title}</div>
                     <div className="price">${product.price.toFixed(2)} Including lenses</div>
                   </NavLink>

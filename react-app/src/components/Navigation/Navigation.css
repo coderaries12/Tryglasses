@@ -10,8 +10,10 @@
   gap:2rem;
   justify-content: space-between;
   border: 1px rgb(159, 157, 157) solid;
-  padding:2rem;
+  padding:0.5rem;
   border-radius: 4px;
+  z-index:10 ;
+  position:fixed;
 }
 
 
@@ -29,6 +31,8 @@
   font-size: 16px;
   border-radius: 4px;
   margin-right: 50px;
+  z-index: 10;
+  position:fixed; 
 }
 
 
@@ -152,7 +156,21 @@ ul{
 .navigation input:focus {
   outline: none;
 }
-/* .fa-thin.fa-wheelchair{
-  color:white;
-  font-size: large;
-} */
+.fa-regular.fa-heart, .fa-solid.fa-cart-shopping, .fa-user-circle{
+  color: black;
+  /* font-size: medium; */
+}
+a{
+  text-decoration: none;
+  color:black;
+}
+.login-logout-modal > button{
+    width: 100px;
+    height: 45px;
+    font-family: inherit;
+    font-weight: 50px;
+    background-color: #0097fb;
+    /* border-radius: 25px 25px; */
+    color: white;
+    font-size: 16px;
+}
