@@ -9,6 +9,7 @@ def seed_products():
 
     product1 = Product(
         userId = 1,
+        type = "sunglasses",
         title = "Nevada",
         price = "61",
         size = "Large",
@@ -21,6 +22,7 @@ def seed_products():
     )
     product2 = Product(
         userId = 1,
+        type = "eyeglasses",
         title = "Sixto",
         price = "59",
         size = "X-Large",
@@ -33,6 +35,7 @@ def seed_products():
     )
     product3 = Product(
         userId = 1,
+        type = "eyeglasses",
         title = "Villeneuve Glasses",
         price = "49",
         size = "Large ",
@@ -45,6 +48,7 @@ def seed_products():
     )
     product4 = Product(
         userId = 1,
+        type = "eyeglasses",
         title = "Avery Glasses",
         price = "42",
         size = "Large",
@@ -57,6 +61,7 @@ def seed_products():
     )
     product5 = Product(
         userId = 1,
+        type = "eyeglasses",
         title = "Kiel Glasses",
         price = "55",
         size = "Small",
@@ -70,6 +75,7 @@ def seed_products():
     )
     product6 = Product(
         userId = 2,
+        type = "eyeglasses",
         title = "Halverson Glasses",
         price = "55",
         size = "Small",
@@ -83,6 +89,7 @@ def seed_products():
     )
     product7 = Product(
         userId = 2,
+        type = "eyeglasses",
         title = "Briggs Glasses",
         price = "52",
         size = "Large",
@@ -96,6 +103,7 @@ def seed_products():
     )
     product8 = Product(
         userId = 2,
+        type = "sunglasses",
         title = "Oakley Cables",
         price = "130",
         size = "Large",
@@ -109,6 +117,7 @@ def seed_products():
     )
     product9 = Product(
         userId = 2,
+        type = "eyeglasses",
         title = "Oakley OX3133",
         price = "19",
         size = "Medium",
@@ -122,6 +131,7 @@ def seed_products():
     )
     product10 = Product(
         userId = 2,
+        type = "sunglasses",
         title = "Oakley Sylas",
         price = "52",
         size = "Large",
@@ -135,6 +145,7 @@ def seed_products():
     )
     product11 = Product(
         userId = 3,
+        type = "sunglasses",
         title = "Oakley Chrystl",
         price = "152",
         size = "X-Large",
@@ -148,6 +159,7 @@ def seed_products():
     )
     product12 = Product(
         userId = 3,
+        type = "eyeglasses",
         title = "Oakley Socket 5.5",
         price = "196",
         size = "Medium",
@@ -161,6 +173,7 @@ def seed_products():
     )
     product13 = Product(
         userId = 3,
+        type = "eyeglasses",
         title = "Oakley Dagger Board",
         price = "183",
         size = "Large",
@@ -174,6 +187,7 @@ def seed_products():
     )
     product14 = Product(
         userId = 3,
+        type = "sunglasses",
         title = "Oakley Holbrook Metal",
         price = "261",
         size = "Large",
@@ -188,6 +202,7 @@ def seed_products():
 
     product15 = Product(
         userId = 3,
+        type = "sunglasses",
         title = "Oakley Holbrook Metal",
         price = "261",
         size = "Large",

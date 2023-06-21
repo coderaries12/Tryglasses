@@ -28,8 +28,12 @@ function Navigation({ isLoaded }){
 					</NavLink>
 				</li>
 				<li>
-					<NavLink exact to="/products" style={{ textDecoration: "none" }}>Eyeglasses</NavLink>
+					<NavLink exact to="/eyeglasses" style={{ textDecoration: "none" }}>Eyeglasses</NavLink>
 				</li>
+				<li>
+					<NavLink exact to="/sunglasses" style={{ textDecoration: "none" }}>Sunglasses</NavLink>
+				</li>
+
 				<li>
 					<form>
 						<input type='search' placeholder="I'm Searching For..." ></input>

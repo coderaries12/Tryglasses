@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from.favorites import favorites
 
 
 class Product(db.Model):
@@ -19,6 +20,7 @@ class Product(db.Model):
     frameShape = db.Column(db.String(100), nullable=False)
     previewImage = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
+    type = db.Column(db.String(100), nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
@@ -27,6 +29,11 @@ class Product(db.Model):
     reviews = db.relationship("Review", back_populates="product", cascade="all, delete-orphan")
     cartItems = db.relationship("CartItem", back_populates="product", cascade="all, delete-orphan")
     
+    product_favorites = db.relationship(
+        "User",
+        secondary='favorites',
+        back_populates="user_favorites",
+    )
 
     def to_dict(self):
         return {
@@ -44,6 +51,7 @@ class Product(db.Model):
             "user": self.user.to_dict(),
             "reviews": [review.to_dict() for review in self.reviews],
             "description": self.description,
+            "type" : self.type,
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
        }
@@ -59,6 +67,7 @@ class Product(db.Model):
             "description": self.description,
             "price": self.price,
             "previewImage": self.previewImage,
+            "type" : self.type,
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
        }

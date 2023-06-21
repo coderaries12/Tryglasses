@@ -35,6 +35,25 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+@user_routes.route('/<int:id>/favorites/products/<int:productId>', methods=['PUT'])
+def add_fav(id, productId):
+    user = User.query.get(id)
+    product = Product.query.get(productId)
+    product.product_favorites.append(user)
+
+    db.session.commit()
+    return {'user': user.to_dict()}
+
+@user_routes.route('/<int:id>/favorites/products/<int:productId>', methods=['DELETE'])
+def delete_fav(id, productId):
+    user = User.query.get(id)
+    product = Product.query.get(productId)
+    product.product_favorites.remove(user)
+
+    db.session.commit()
+    return {'user': user.to_dict()}
+
+
 @user_routes.route('/<int:id>/cart/products/<int:productId>/<int:value>', methods=['POST'])
 def add_cart(id, productId, value):
     user = User.query.get(id)

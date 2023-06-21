@@ -81,7 +81,8 @@ ul{
   /* display: flex;
   flex-direction: row; */
   display:grid;
-  grid-template-columns: 2fr 10fr 8fr 2fr 2fr 2fr; 
+  /* grid-template-columns: 2fr 10fr 8fr 2fr 2fr 2fr;  */
+  grid-template-columns: 1fr 1fr 1fr 6fr 2fr 2fr 1fr;
   font-family: inherit;
   color:black;
   grid-gap:8.5rem;     
@@ -94,7 +95,7 @@ ul{
   padding: 10px 0 15px 0; 
 }
 .nologin {
-  grid-template-columns: 4fr 20fr 10fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 4fr 1fr 1fr ;
 }
 .top-strip-container{
   padding: 0 16px 0 60px; 

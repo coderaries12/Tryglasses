@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import { fetchProducts } from "../../store/products";
 import FavoriteIcon from "../FavoriteIcon";
-import "./product_list.css";
+import "./Sunglasses.css";
 
-const ProductList = () => {
+const Sunglasses = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const allProducts = Object.values(useSelector((state) => state.products));
-    const products = allProducts.filter(product => product.type == "eyeglasses");
-
+    const products = allProducts.filter(product => product.type == "sunglasses");
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -56,4 +55,4 @@ const ProductList = () => {
       </div>
     ) 
 }  
-export default ProductList;
+export default Sunglasses;

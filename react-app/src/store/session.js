@@ -1,14 +1,26 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_FAV = "session/ADD_FAV"
+const DELETE_FAV = "session/DELETE_FAV"
 const ADD_CART = "session/ADD_CART"
 const UPDATE_CART ="session/UPDATE_CART"
 const DELETE_CART_ITEM = "session/DELETE_CART_ITEM"
+const DELETE_CART = "session/DELETE_CART"
 
 const setUser = (user) => ({
 	type: SET_USER,
 	payload: user,
 });
+
+const addFav = (updatedUser) => ({
+	type: ADD_FAV,
+	updatedUser
+})
+const deleteFav = (updatedUser) => ({
+	type: DELETE_FAV,
+	updatedUser
+})
 
 const removeUser = () => ({
 	type: REMOVE_USER,
@@ -22,6 +34,11 @@ const addCart = (newCartItem) => ({
 const updateCart = (updatedCartItem) => ({
 	type: UPDATE_CART,
 	updatedCartItem
+})
+
+const deleteCart = (cartSession) => ({
+	type: DELETE_CART,
+	cartSession
 })
 
 const deleteCartItem = (cartItem) => ({
@@ -112,6 +129,31 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+export const thunkAddFav = (productId, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/favorites/products/${productId}`,{
+        method:'PUT',
+        headers:{ "Content-Type" : 'application/json' },
+        // body: JSON.stringify(editreview)
+    })
+    if(response.ok) {
+        const updatedUser = await response.json();
+        dispatch(addFav(updatedUser))
+        return updatedUser;  
+    };
+}
+
+export const thunkDeleteFav = (productId, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/favorites/products/${productId}`,{
+        method:'DELETE',
+	})
+	if(response.ok) {
+        const updatedUser = await response.json();
+        dispatch(deleteFav(updatedUser))
+        return updatedUser;  
+    };
+}
+
+
 
 
 export const thunkAddToCart = (sessionUser, product, value) => async (dispatch) => {
@@ -163,6 +205,23 @@ export const thunkUpdateCart = (sessionUser, cartId, product, value) => async (d
 				return cartItem
 			};
 		}
+	
+	export const placeOrderThunk = (userId) => async (dispatch) => {
+		const options = {
+				method:'DELETE',
+				headers: {
+					"Content-Type": "application/json"
+				}
+		}
+		const response = await fetch(`/api/users/${userId}/cart`, options)
+			
+		if(response.ok) {
+				const cartSessionObj = await response.json()
+				const cartSession = cartSessionObj.cart_session
+				dispatch(deleteCart(cartSession))
+				return cartSession
+		}
+		}
 
 //reducer
 const initialState = { user: null };
@@ -179,6 +238,10 @@ export default function reducer(state = initialState, action) {
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case ADD_FAV:
+			return { ...action.updatedUser}
+		case DELETE_FAV:
+			return { ...action.updatedUser}
 		case ADD_CART:
 			let newCart = state.user.cart_session.cart
 			newCart.push(action.newCartItem)
@@ -202,6 +265,15 @@ export default function reducer(state = initialState, action) {
 			newState.user.cart_session.cart = newStateCart
 			index = stateCart.findIndex(cartItem => cartItem.id === cartItemId)
 			newStateCart.splice(index, 1)
+			return newState
+		case DELETE_CART:
+			newState = { ...state }
+			newUser = { ...state.user }
+			newCartSession = { ...state.user.cart_session }
+			newStateCart = []
+			newState.user = newUser
+			newState.user.cart_session = newCartSession
+			newState.user.cart_session.cart = newStateCart
 			return newState
 		default:
 			return state;

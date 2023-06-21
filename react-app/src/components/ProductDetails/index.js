@@ -9,6 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 import ImageCarousel from "./ImageCarousel";
 import "./productdetail.css"
 import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
+import FavoriteIcon from "../FavoriteIcon";
 
 
 const ProductDetails = () => {
@@ -18,11 +19,11 @@ const ProductDetails = () => {
     const product = useSelector((state) => state.products[productId]);
     const sessionUser = useSelector((state) => state.session.user);
    
-    console.log("product detail component", product?.reviews.length)
+    console.log("product detail component", product?.reviews?.length)
     
     const reviewAvg = () => {
         let totalStars = 0;
-        product.reviews.forEach((review) => {
+        product?.reviews?.forEach((review) => {
           totalStars += review.stars;
         });
         const average = totalStars / product.reviews.length;
@@ -45,6 +46,7 @@ const ProductDetails = () => {
           } else if (product?.reviews.length > 1) {
             return `${product.reviews.length} customer reviews`;
           }
+
         }
         return "New";
       };
@@ -52,6 +54,8 @@ const ProductDetails = () => {
     useEffect(() => {
         dispatch(fetchProducts());
       }, [dispatch]);
+
+      
 
       let value = 1;
       const itemquantity = () => {
@@ -205,7 +209,7 @@ const ProductDetails = () => {
             </div>
           <div className="right-side-container">
             <h1>{product?.title}</h1>
-            <div className="star-right-side-container">{reviewExists && reviewAvg()}⭐({reviewsLength()})</div>
+            <div className="star-right-side-container">{product?.reviews.length ? ` ${reviewAvg()}  ⭐` : ""}({reviewsLength()})</div>
             <div className="price-detail">Price: ${product?.price}</div>
             <div className="size-detail">Size: {product?.size}</div>
             <div className="right-ship-return"><button>Free shipping & returns</button></div>
@@ -231,7 +235,13 @@ const ProductDetails = () => {
               <button onClick={addToCart} className="add-to-cart-button">
                 Add to Cart
               </button>
-              <button id="add-favorites-button">Add to Favorites</button>
+              <div className="fav-in-page-detail">
+              <FavoriteIcon
+                sessionUser={sessionUser}
+                product={product}
+                onpagedetails={"YES"}
+              />
+            </div>
             </div>
         </div>
             

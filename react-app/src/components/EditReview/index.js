@@ -22,9 +22,13 @@ const [errors, setErrors] = useState({});
 
 
     useEffect(() => {
+        const errors = {};
+        if (reviews.length > 255 || reviews.length < 10)
+              errors.reviews = "Please enter the valid Review "
+              
+            setErrors(errors);
         
-        
-    },[review, stars])
+    },[review, stars, reviews])
 
 const handleSubmit = async(e) => {
     e.preventDefault();
@@ -38,16 +42,17 @@ const handleSubmit = async(e) => {
             stars,
             reviewImage
     }
-
-    const errors = {};
+    // const errors = {};
     
-    if (stars > 5 || stars < 1) {
-            errors.stars = "Stars must be between 1 and 5";
-    }
-    if (review.length > 255 || review.length < 5)
-          errors.review = "Please enter the Review "
-        setErrors(errors);   
-    setErrors(errors);
+    // if (stars > 5 || stars < 1) {
+    //         errors.stars = "Stars must be between 1 and 5";
+    // }
+    // if (reviews.length > 255 || reviews.length < 5)
+    //       errors.reviews = "Please enter the valid Review "
+          
+    //     setErrors(errors);
+       
+    
 
     let editedReview = await dispatch(thunkEditReview(editreview, product.id))
     if (editedReview){
@@ -173,13 +178,15 @@ return (
         </div>
         <div>
         <label> Your Review </label>
-          <h4 className="formErrors">{errors?.review}</h4>
+          <h4 className="formErrors">{errors?.reviews}</h4>
           <textarea
             rows="8"
             cols="40"
+            value={reviews}
+            minlength="10"
+            maxlength="255"
             style={{resize:"none"}}
             placeholder='e.g.I bought this frame two weeks ago and I am so happy'
-            value={reviews}
             onChange={(e) => setReviews(e.target.value)} required />
         </div>
         <div>

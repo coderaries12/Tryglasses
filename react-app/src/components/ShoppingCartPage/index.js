@@ -5,6 +5,7 @@ import { fetchProducts } from "../../store/products"
 import { useHistory } from "react-router-dom";
 import OpenModalButton from "../../components/OpenModalButton";
 import DeleteShoppingCart from "../DeleteShoppingCart";
+import { placeOrderThunk } from "../../store/session";
 import "./ShoppingCartPage.css"
 
 // import { placeOrderThunk } from "../../store/session";
@@ -28,7 +29,7 @@ const ShoppingCartPage = () => {
     const checkout = () => {
       // history.push("/")
       window.alert("Order Placed!")
-    //   dispatch(placeOrderThunk(sessionUser.id))
+      dispatch(placeOrderThunk(sessionUser.id))
     }
 
     return (

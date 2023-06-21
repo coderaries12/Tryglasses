@@ -12,7 +12,8 @@ import PostReviewModal from "./components/PostReviewModal";
 import HomePage from "./components/HomePage";
 import ShoppingCartPage from "./components/ShoppingCartPage";
 import Footer from "./components/Footer";
-
+import FavoritePage from "./components/FavoritePage";
+import Sunglasses from "./components/Sunglasses";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,12 +36,19 @@ function App() {
           <Route exact path="/" >
             <HomePage />
           </Route>
+          <Route exact path="/favorites" >
+            <FavoritePage />
+          </Route>
           <Route exact path="/shoppingcart" >
             <ShoppingCartPage />
           </Route>
-          <Route exact path="/products">
+          <Route exact path="/eyeglasses">
             <ProductList />
           </Route>
+          <Route exact path="/sunglasses">
+            <Sunglasses />
+          </Route>
+
           <Route exact path="/products/:productId">
             <ProductDetails />
           </Route>
