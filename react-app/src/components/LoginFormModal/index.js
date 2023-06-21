@@ -39,23 +39,24 @@ function LoginFormModal() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        
+        <label for="email">
           <input
            placeholder="✉︎ Email address"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          
+          </label>
+          <label>
           <input
-           
             placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          </label>
         <div className="login-button">
         <button type="submit" className="login-button">Continue</button>
         <button className="demo-user" onClick={demouserhandleSubmit}>Demo User </button>

@@ -10,7 +10,7 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    title = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(25), nullable=False)
     price = db.Column(db.Float, nullable=False)
     size = db.Column(db.String(100), nullable=False)
     frameType = db.Column(db.String(100), nullable=False)

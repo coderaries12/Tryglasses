@@ -25,9 +25,10 @@ const PostReviewModal = ({ product }) => {
     if (stars > 5 || stars < 1) {
         errors.stars = "Stars must be between 1 and 5";
       }
+    if (review.length > 255 || review.length < 5)
+      errors.review = "Please enter the Review "
     setErrors(errors);
-    if (review.length === 0 )
-    errors.review = "Review required"
+    
   }, [reviewTitle, quality, fit, style, review, stars, reviewImage]);
 
   const handleSubmit = async (e) => {
@@ -160,20 +161,24 @@ const PostReviewModal = ({ product }) => {
           <h4 className="formErrors">{errors?.reviewTitle}</h4>
           <input
             placeholder='e.g.Love this Frame'
+            type="text"
             value={reviewTitle}
-            minLength="5"
+            minlength="5"
+            maxlength="50"
             onChange={(e) => setReviewTitle(e.target.value)} required />
         </div>
         <div>
         <label> Your Review </label>
           <h4 className="formErrors">{errors?.review}</h4>
           <textarea
+            type="text"
             rows="8"
             cols="45"
-            minLength="10"
+            value={review}
+            minlength="10"
+            maxlength="255"
             style={{resize:"none"}}
             placeholder='e.g.I bought this frame two weeks ago and I am so happy'
-            value={review}
             onChange={(e) => setReview(e.target.value)} required />
         </div>
         <div>

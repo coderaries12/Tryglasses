@@ -9,16 +9,19 @@
 }
 #carousel-wrapper button.control-arrow.control-next{
     color:black;
+    /* border:solid red;  */
+     
 }
 #carousel-wrapper p.carousel-status{
     display:none;
 }
 #carousel-wrapper .control-next.control-arrow:before {
-    border-left: 8px solid black;
+    border-left: 15px solid black;
+    
     
 }
 #carousel-wrapper .control-prev.control-arrow:before {
-    border-right: 8px solid black;
+    border-right: 15px solid black;
 }
 #carousel-wrapper .carousel-image{
     background-size: cover;

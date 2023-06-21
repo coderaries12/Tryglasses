@@ -38,16 +38,17 @@ function SignupFormModal() {
 						<li key={idx} className="errors">{error}</li>
 					))}
 				</ul>
-				
+				  <label>
 					<input
 						placeholder="Email"
-						type="text"
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
+					</label>
 				
-				
+				 <label>
 					<input
 						placeholder="Username"
 						type="text"
@@ -55,6 +56,7 @@ function SignupFormModal() {
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
+					</label>
 				
 				
 					<input

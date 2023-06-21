@@ -8,7 +8,8 @@ export default function ImageCarousel() {
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId]);
     return (
-        <Carousel id="image-carousel">
+      <div id="image-carousel">
+        <Carousel >
             
             {product?.images.map((image) => (
           <div key={image.id} className={image.image? "" : "hidden"}>
@@ -16,6 +17,6 @@ export default function ImageCarousel() {
           </div>
         ))}
         </Carousel>
-        
+       </div> 
     );
 }

@@ -10,7 +10,8 @@
   gap:2rem;
   justify-content: space-between;
   border: 1px rgb(159, 157, 157) solid;
-  padding:0.5rem;
+  padding: 10px 18px 10px 18px; 
+  background-color: white;
   border-radius: 4px;
   z-index:10 ;
   position:fixed;
@@ -20,7 +21,7 @@
 
 .logged-in-profile {
   display: flex;
-  border:solid red 1px;
+  /* border:solid red 1px; */
   flex-direction: column;
   /* position: absolute; */
   border: 1px rgb(159, 157, 157) solid;
@@ -28,6 +29,7 @@
   margin-top: 5px;
   padding: 2px 6px 2px 8px; 
   gap: 5px;
+  font:inherit;
   font-size: 16px;
   border-radius: 4px;
   margin-right: 50px;
@@ -166,11 +168,12 @@ a{
 }
 .login-logout-modal > button{
     width: 100px;
-    height: 45px;
+    height: 35px; 
+    /* padding:0.5rem; */
     font-family: inherit;
     font-weight: 50px;
     background-color: #0097fb;
     /* border-radius: 25px 25px; */
     color: white;
-    font-size: 16px;
+    font-size: 14px;
 }

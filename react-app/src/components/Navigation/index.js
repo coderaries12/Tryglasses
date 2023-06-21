@@ -24,7 +24,7 @@ function Navigation({ isLoaded }){
 			<ul className={sessionUser? 'navigation': 'navigation nologin'}>
 				<li id="logo">
 					<NavLink exact to="/" style={{ textDecoration: "none" }}>
-						Logo
+				<div style={{width:"5rem"}}><img className='logo-image' src="https://res.cloudinary.com/dxrhf8ah9/image/upload/v1687303397/try-glasses_cjpukl.png" alt='logo' style={{display:"inline-block",height:"55px",padding:"0 55px" ,objectFit:"contain"}} /> </div>
 					</NavLink>
 				</li>
 				<li>

@@ -34,10 +34,17 @@ const ShoppingCartPage = () => {
     return (
         <div className="bodyContainer">
           <div className="cartpage">
-            <h1>Shopping Cart</h1>
+            {sessionUser?.cart_session?.cart.length ?(
+              <div style={{display:"flex",gap:"1rem"}}>
+                  <h1>Shopping Cart </h1>
+                  <div style={{marginTop:"1rem"}}>{sessionUser?.cart_session?.cart.length} ITEM IN CART</div>
+              </div>
+            ): <></>}
+            
+          
             <div className="product-in-cartpage">
               {sessionUser?.cart_session?.cart.map((ele) => (
-                <div key={ele.product.id} className="item-in-shop">
+                <div key={ele.product.id} className="item-in-shop" style={{display:"flex", justifyContent:"center",textAlign:"center"}}>
                     {console.log("inside the map", ele)}
                     <NavLink to={`/products/${ele.product.id}`}>
                         <img
@@ -72,13 +79,16 @@ const ShoppingCartPage = () => {
           </div>
             
             <div className="empty-cart">
-              <h2 className={sessionUser?.cart_session?.cart.length >= 1? "hidden":""}>
-                Your cart is empty
-              </h2>
+              
               <div className={sessionUser?.cart_session?.cart.length >= 1? "hidden":""}>
-                <NavLink exact to="/" >
-                  Continue Shopping
-                </NavLink>
+                
+                  <div style={{display:"flex",flexDirection:"column",alignContent:"center",gap:"1.8rem",textDecoration:"none"}}>
+                  <div style={{display:"flex",justifyContent:"center"}}><i className="fa-solid fa-cart-shopping fa-2xl" /></div>
+                  <h2 style={{textDecoration:"none"}}>Shopping Cart is Empty</h2>
+                  <p>You have no items in your shopping cart</p>
+                  <NavLink exact to="/products" style={{display:"inline-block",border:"solid", width:"7rem",height:"2rem",margin:"0.1px 80px",padding:"1px 1px", textAlign:"center"}}>Shop 🤓</NavLink>
+                  </div>
+                
               </div >
             </div>
             <button onClick={checkout} 

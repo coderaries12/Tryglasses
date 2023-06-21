@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    gap:10rem;
+    gap:19rem;
     /* grid-template-columns: 1fr; */
     max-width: fit-content;
     margin-top: 5px;
@@ -34,14 +34,14 @@
 
 .about p{
     padding: 10px;
-    color: rgb(119, 114, 114);
+    color: black;
 
 }
 
 .about i{
     padding: 0 15px;
     font-size: 28px;
-    color: rgb(119, 114, 114);
+    color: black;
 }
 
 .about-grid-one {
@@ -49,6 +49,6 @@
 }
 
 .fa-regular.fa-copyright {
-    color: rgb(119, 114, 114);
+    color: black;
     font-size: 15px;
 }

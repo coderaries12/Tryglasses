@@ -23,6 +23,7 @@ const [errors, setErrors] = useState({});
 
     useEffect(() => {
         
+        
     },[review, stars])
 
 const handleSubmit = async(e) => {
@@ -39,24 +40,13 @@ const handleSubmit = async(e) => {
     }
 
     const errors = {};
-    if (reviewTitle === "") {
-        errors.review = "Review title is required";
-      }
-      if (quality === "") {
-          errors.review = "Quality is required";
-      }
-      if (fit === "") {
-          errors.review = "Fit is required";
-      }
-      if (style === "") {
-          errors.review = "Style is required";
-      }
-    if (reviews==="") {
-            errors.reviews = "Review is required";
-    }
+    
     if (stars > 5 || stars < 1) {
             errors.stars = "Stars must be between 1 and 5";
     }
+    if (review.length > 255 || review.length < 5)
+          errors.review = "Please enter the Review "
+        setErrors(errors);   
     setErrors(errors);
 
     let editedReview = await dispatch(thunkEditReview(editreview, product.id))
@@ -142,7 +132,7 @@ return (
         <div className="quality-fit-style-div">
         <div>
         <label for="itemquality">Quality:</label>
-        <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)} value={quality}>
+        <select name="quality" id="itemquality" onChange={(e) => setQuality(e.target.value)} value={quality} required>
             <option value=""> Choose Quality </option>
             <option value="low">Low</option>
             <option value="average">Average</option>
@@ -151,7 +141,7 @@ return (
         </div>
         <div>
         <label for="itemfit"> Fit:</label>
-        <select name="fit" id="itemfit" onChange={(e) => setFit(e.target.value)} value={fit}>
+        <select name="fit" id="itemfit" onChange={(e) => setFit(e.target.value)} value={fit} required>
             <option value=""> Choose Fit </option>
             <option value="loose">Loose</option>
             <option value="truetosize">True to size</option>
@@ -160,7 +150,7 @@ return (
         </div>
         <div>
         <label for="itemstyle"> Style:</label>
-        <select name="style" id="itemstyle" onChange={(e) => setStyle(e.target.value)} value={style}>
+        <select name="style" id="itemstyle" onChange={(e) => setStyle(e.target.value)} value={style} required>
             <option value=""> Choose Style </option>
             <option value="chic">Chic</option>
             <option value="vintage">Vintage</option>
@@ -173,9 +163,13 @@ return (
 
           <h4 className="formErrors">{errors?.reviewTitle}</h4>
           <input
-            placeholder='e.g.Love this Frame'
+            type="text"
             value={reviewTitle}
-            onChange={(e) => setReviewTitle(e.target.value)}/>
+            minlength="5"
+            maxlength="50"
+            placeholder='e.g.Love this Frame'
+            
+            onChange={(e) => setReviewTitle(e.target.value)} required />
         </div>
         <div>
         <label> Your Review </label>
@@ -183,9 +177,10 @@ return (
           <textarea
             rows="8"
             cols="40"
+            style={{resize:"none"}}
             placeholder='e.g.I bought this frame two weeks ago and I am so happy'
             value={reviews}
-            onChange={(e) => setReviews(e.target.value)}/>
+            onChange={(e) => setReviews(e.target.value)} required />
         </div>
         <div>
         <label> Don't be shy, Upload  edit picture of you in new glasses</label>

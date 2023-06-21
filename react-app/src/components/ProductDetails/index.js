@@ -17,7 +17,7 @@ const ProductDetails = () => {
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId]);
     const sessionUser = useSelector((state) => state.session.user);
-
+   
     console.log("product detail component", product?.reviews.length)
     
     const reviewAvg = () => {
@@ -129,10 +129,10 @@ const ProductDetails = () => {
             <div className="total-reviews">
                 <div className="reviews-length-star">
                     <div className="star">{product?.reviews.length ? ` ${reviewAvg()}  ⭐` : ""}</div>
-                    <div>{reviewsLength()} </div>
+                    <div style={{marginTop:"17px"}}>{reviewsLength()} </div>
                     
                 </div>
-                <div className="button-post-review">
+                <div className="button-post-review" style={{marginLeft:"270px" ,marginTop: "17px"}}>
                     {sessionUser &&
                     sessionUser.id !== product?.userId &&
                     !reviewExists && (
@@ -150,7 +150,7 @@ const ProductDetails = () => {
                             <div key={r.id}>
                                 <div className="review-information ">
                                 <div className="user-info">
-                                    <p>{reviewAvg()}⭐</p>
+                                    <p>{r.stars}⭐</p>
                                     <p id="username">{r.user?.username} </p>
                                     <p>{r.createdAt}</p>
                                 
