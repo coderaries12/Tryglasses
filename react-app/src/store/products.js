@@ -40,7 +40,7 @@ export const fetchProducts = () => async (dispatch) => {
 
 //Reviews Thunk
 export const thunkNewReview = (review,productId) => async (dispatch) => {
-    console.log("inside the review thunk",review,productId)
+    
     const response = await fetch(`/api/products/${productId}/reviews`,{
         method:'POST',
         headers:{ "Content-Type" : 'application/json' },
@@ -52,7 +52,7 @@ export const thunkNewReview = (review,productId) => async (dispatch) => {
         newReviewObj = await response.json();
         await dispatch(createReview(newReviewObj.review))
     } 
-    console.log("reviewobj",newReviewObj)
+    
     return review;  
 };
 

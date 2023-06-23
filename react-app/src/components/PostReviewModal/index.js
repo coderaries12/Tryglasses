@@ -18,7 +18,7 @@ const PostReviewModal = ({ product }) => {
   const [reviewImage, setReviewImage] = useState("");
 
   const [errors, setErrors] = useState({});
-//   console.log("errors", errors)
+
   
   useEffect(() => {
     const errors = {};

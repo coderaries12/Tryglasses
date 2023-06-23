@@ -169,14 +169,14 @@ export const thunkAddToCart = (sessionUser, product, value) => async (dispatch) 
 	if(response.ok) {
 		
         const newCartItem = await response.json();
-		console.log("inside the add to cart thunk",newCartItem)
+		
         dispatch(addCart(newCartItem.newCartItem))
         return newCartItem
     };
 }
 
 export const thunkUpdateCart = (sessionUser, cartId, product, value) => async (dispatch) => {
-	console.log("value in thunk", value)
+	
 		const response = await fetch(`/api/users/${sessionUser.id}/cart/products/${product.id}/${cartId}/${value}`,{
 			method:'PUT',
 			headers:{ "Content-Type" : 'application/json' },
@@ -192,7 +192,7 @@ export const thunkUpdateCart = (sessionUser, cartId, product, value) => async (d
 	}
 
 	export const thunkDeleteCartItem = (sessionUserId,cartId, productId,) => async (dispatch) => {
-		console.log("value in thunk", cartId,productId,sessionUserId)
+		
 			const response = await fetch(`/api/users/${sessionUserId}/cart/products/${productId}/${cartId}`,{
 				method:'DELETE',
 				headers:{ "Content-Type" : 'application/json' }
@@ -200,7 +200,7 @@ export const thunkUpdateCart = (sessionUser, cartId, product, value) => async (d
 			if(response.ok) {
 				const cartItemObj = await response.json();
 				const cartItem = cartItemObj.cartItem
-				console.log("inside the dleete thunk", cartItem)
+				
 				dispatch(deleteCartItem(cartItem))
 				return cartItem
 			};

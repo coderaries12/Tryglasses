@@ -9,7 +9,7 @@ const DeleteShoppingCart = ({cartId, productId,sessionuserId}) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const {closeModal} =  useModal();
-    console.log("props",cartId,productId,sessionuserId)
+    
 
     const handleSubmityes = async (e) => {
       e.preventDefault();

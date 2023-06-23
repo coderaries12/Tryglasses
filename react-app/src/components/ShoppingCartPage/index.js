@@ -40,7 +40,7 @@ const ShoppingCartPage = ({product}) => {
         
         value = parseInt(parseInt(value) + checkproduct.quantity);
               let cartId = checkproduct.id;
-              console.log("valuesssss:", value);
+              
               dispatch(thunkUpdateCart(sessionUser, cartId, product, value)).then(
               history.push("/shoppingcart")
             );
@@ -75,7 +75,7 @@ const ShoppingCartPage = ({product}) => {
             <div className="product-in-cartpage">
               {sessionUser?.cart_session?.cart.map((ele) => (
                 <div key={ele.product.id} className="item-in-shop">
-                    {console.log("inside the map", ele)}
+                    
                     <NavLink to={`/products/${ele.product.id}`}>
                         <img
                           className="product-image"
@@ -153,7 +153,7 @@ const ShoppingCartPage = ({product}) => {
             <div style={{display:"block",justifyContent:"center",margin:"60px 0 0", width:"30%", gap:"1.5rem", marginLeft:"32rem"}}>
             <button onClick={checkout} 
               style={{alignItems:"center"}}
-              className={sessionUser?.cart_session?.cart.length >= 1? "down-button":"down-button hidden"}>
+              className={sessionUser?.cart_session?.cart.length >= 1? "checkout-btn":"checkout-btn hidden"}>
                 Proceed to checkout
             </button>
             </div>

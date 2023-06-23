@@ -20,7 +20,7 @@ const ProductDetails = () => {
     const product = useSelector((state) => state.products[productId]);
     const sessionUser = useSelector((state) => state.session.user);
    
-    console.log("product detail component", product?.reviews?.length)
+    
     
     const reviewAvg = () => {
         let totalStars = 0;
@@ -66,7 +66,7 @@ const ProductDetails = () => {
         if (!sessionUser) {
           window.alert("Please log in first");
         } else {
-          console.log("checkproduct:", sessionUser);
+          
           checkproduct = sessionUser.cart_session.cart.find(
             (ele) => ele.productId == product.id
           );
@@ -214,8 +214,9 @@ const ProductDetails = () => {
               </button> }
               
         </div>
-        <div className="fav-in-page-detail">
+        <div>
               <FavoriteIcon
+                
                 sessionUser={sessionUser}
                 product={product}
                 onpagedetails={"YES"}

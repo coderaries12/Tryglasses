@@ -13,7 +13,7 @@ const HomePage = () => {
 	const products = Object.values(useSelector((state) => (state.products)));
 	let userfavorite
 	let recommendProduct
-	console.log("userfavorite", userfavorite)
+	
 
 	useEffect(() => {
         dispatch(fetchProducts());
