@@ -17,8 +17,7 @@
 }
 #carousel-wrapper .control-next.control-arrow:before {
     border-left: 15px solid black;
-    
-    
+        
 }
 #carousel-wrapper .control-prev.control-arrow:before {
     border-right: 15px solid black;
@@ -29,11 +28,13 @@
 #carousel-wrapper div.carousel-root{
     height:520px;
 }
+/*  */
 
 
 
 .bottom-strip-container{
-        padding: 0 16px 0 60px; 
+        padding: 10px 16px 0 60px; 
+        
         border:solid #d7ebfb 1px; 
         background-color:#e7f4fe;
         font-family: inherit;
@@ -57,14 +58,15 @@
     .bottom-strip-container > ul > li{
         border-right: solid black 1px;
         padding-right:7rem;
+        font-size: 13px;
       }
 .fa-solid.fa-star{
     color:green;
     } 
     .brand-strip-container{
-        padding: 0 16px 0 60px; 
+        padding: 10px 16px 0 60px; 
         font-family: inherit;
-        font-size: 13px;
+        font-size: 14px;
         height: 100%;
         width:100%;
         margin: 0;
@@ -81,7 +83,7 @@
     .brand-strip-container > ul > li{
         border:solid #6d6d6d 2px;
         border-radius: 70px;
-        padding:0 16px;
+        padding:7px 16px;
     }
     .p1 {
         display: block;
@@ -101,4 +103,42 @@
         font-size: 20px;
 
     }
+    .down-button{
+        margin: 0 18px 0 0;
+        color: rgb(255, 255, 255);
+        border-color: rgb(33, 150, 243);
+        background-color: rgb(33, 150, 243);
+        width: 249px;
+        display: inline-flex;
+    
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 100px;
+    outline: 0px;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    border: 0px;
+    border-radius: 24px;
+    width: 100%;
+    height: 48px;
+    padding: 10px 20px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+
+
+
+    
   

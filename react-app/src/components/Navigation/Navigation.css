@@ -82,20 +82,21 @@ ul{
   flex-direction: row; */
   display:grid;
   /* grid-template-columns: 2fr 10fr 8fr 2fr 2fr 2fr;  */
-  grid-template-columns: 1fr 1fr 1fr 6fr 2fr 2fr 1fr;
+  grid-template-columns: 5fr 2fr 15fr 8fr 1fr 1fr 1fr;
   font-family: inherit;
   color:black;
-  grid-gap:8.5rem;     
+  grid-gap:3.5rem;      
   border-bottom: solid 2px rgb(222, 219, 219);
   justify-content: space-between;
    align-items:center; 
   width: 100%;
   margin: 0;
   /* gap:12.5rem; */
-  padding: 10px 0 15px 0; 
+  /* padding: 10px 0 15px 0;  */
+  padding: 0 10px 0 26px;
 }
 .nologin {
-  grid-template-columns: 1fr 1fr 1fr 4fr 1fr 1fr ;
+  grid-template-columns: 5fr 2fr 15fr 8fr 1fr 1fr ;
 }
 .top-strip-container{
   padding: 0 16px 0 60px; 

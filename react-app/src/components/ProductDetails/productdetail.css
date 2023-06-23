@@ -450,7 +450,7 @@ p#username{
     flex-direction: column;
     gap:0.5rem;
     margin-top: 15px;
-    padding-right:54px;
+    padding-right:100px;
     width:55px;
 
 }

@@ -10,6 +10,7 @@ import ImageCarousel from "./ImageCarousel";
 import "./productdetail.css"
 import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
 import FavoriteIcon from "../FavoriteIcon";
+import ShoppingCartPage from "../ShoppingCartPage";
 
 
 const ProductDetails = () => {
@@ -57,12 +58,8 @@ const ProductDetails = () => {
 
       
 
-      let value = 1;
-      const itemquantity = () => {
-        value = document.getElementById("itemquantity").value;
-        console.log("value:", value);
-      };
-    
+      
+      let value =1
       const addToCart = async () => {
         let checkproduct;
     
@@ -78,12 +75,8 @@ const ProductDetails = () => {
             await dispatch(thunkAddToCart(sessionUser, product, value))
             history.push("/shoppingcart")
         } else if (checkproduct) {
-            value = parseInt(parseInt(value) + checkproduct.quantity);
-            let cartId = checkproduct.id;
-            console.log("valuesssss:", value);
-            dispatch(thunkUpdateCart(sessionUser, cartId, product, value)).then(
-              history.push("/shoppingcart")
-            );
+          window.alert("This product is already in your Shopping cart");
+            
         }
         }
       };
@@ -216,38 +209,23 @@ const ProductDetails = () => {
             <div className="right-ship-return"><button>100% money-back guarantee</button></div>
         <div className="add-to-cart">
             
-              <label>Quantity</label>
-            
-            <select
-              name="quantity"
-              placeholder="Quantity"
-              id="itemquantity"
-              onChange={itemquantity}
-            >
-              {/* <option value="" disabled selected>Select quantity</option> */}
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <div className="cart-button">
-              <button onClick={addToCart} className="add-to-cart-button">
+              { <button onClick={addToCart} className="add-to-cart-button">
                 Add to Cart
-              </button>
-              <div className="fav-in-page-detail">
+              </button> }
+              
+        </div>
+        <div className="fav-in-page-detail">
               <FavoriteIcon
                 sessionUser={sessionUser}
                 product={product}
                 onpagedetails={"YES"}
               />
-            </div>
-            </div>
+        </div>
         </div>
             
             
         </div>
-        </div>
+        
         
     )
 
