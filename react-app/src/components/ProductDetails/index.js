@@ -51,6 +51,19 @@ const ProductDetails = () => {
         }
         return "New";
       };
+      const rightcontainerreviewsLength = () => {
+        if (product?.reviews.length) {
+          if (product?.reviews.length === 1) {
+            return `${product.reviews.length} review`;
+          } else if (product?.reviews.length > 1) {
+            return `${product.reviews.length} reviews`;
+          }
+
+        }
+        return "New";
+      };
+
+
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -91,35 +104,35 @@ const ProductDetails = () => {
             
         
             <div className="bottom-tabs-wrapper">
-                <div className="pd-bottom">
+                {/* <div className="pd-bottom">
                     <button className="bottom-tabs">Description</button>
                     <button className="bottom-tabs">Frame & Measurements</button>
                     <button className="bottom-tabs">Shipping & Returns</button>
-                </div>
+                </div> */}
                 <div className="bottom-tabs-info">
-                        <div>
-                            <h2>Description :</h2>
-                            <h4>About {product?.title}</h4>
-                            <p>{product?.description}</p>
+                        <div style={{marginTop:"5px"}}>
+                            <h2 style={{marginBottom:"5px", marginLeft:"10px", marginTop:"15px"}}>Description :</h2>
+                            {/* <h4>About {product?.title}</h4> */}
+                            <p style={{marginBottom:"5px", marginLeft:"10px"}}>{product?.description}</p>
                         </div>
                         <div className="bottom-tabs-desc">
                                 <div className="description-list">
-                                    <h2>Frame & Measurements :</h2>
-                                    <ul>
-                                        <li>Size: {product?.size}</li>
-                                        <li>Color: {product?.frameColor}</li>
-                                        <li>Material: {product?.frameMaterial}</li>
-                                        <li>Shape: {product?.frameShape}</li>
-                                        <li>Type: {product?.frameType}</li>
+                                    <h2 style={{marginBottom:"10px", marginLeft:"10px"}}>Frame & Measurements :</h2>
+                                    <ul style={{marginBottom:"5px", marginLeft:"10px"}}>
+                                        <li style={{marginBottom:"5px", marginLeft:"10px"}}>Size: {product?.size}</li>
+                                        <li style={{marginBottom:"5px", marginLeft:"10px"}}>Color: {product?.frameColor}</li>
+                                        <li style={{marginBottom:"5px", marginLeft:"10px"}}>Material: {product?.frameMaterial}</li>
+                                        <li style={{marginBottom:"5px", marginLeft:"10px"}}>Shape: {product?.frameShape}</li>
+                                        <li style={{marginBottom:"5px", marginLeft:"10px"}}>Type: {product?.frameType}</li>
                                     </ul>
                                 </div>
-                                <div className="frameimage-div">
-                                    <img src={product?.previewImage} alt={product?.title} width="200px" height="100px" />
+                                <div className="frameimage-div" style={{display:"flex"}}>
+                                    <img src={product?.previewImage} alt={product?.title}  height="120px" />
                                 </div>        
                         </div>
                         <div className="shipping-returns">
-                                <h2>Shipping & Returns:</h2>
-                                <p>Enjoy Free Shipping and returns on all orders</p>        
+                                <h2 style={{marginBottom:"10px", marginLeft:"10px"}}>Shipping & Returns:</h2>
+                                <p style={{marginBottom:"20px", marginLeft:"10px"}}>Enjoy Free Shipping and returns on all orders</p>        
                         </div>
                 </div>    
             </div>
@@ -147,8 +160,9 @@ const ProductDetails = () => {
                             <div key={r.id}>
                                 <div className="review-information ">
                                 <div className="user-info">
-                                    <p>{r.stars}⭐</p>
                                     <p id="username">{r.user?.username} </p>
+                                    <p>{r.stars} ⭐</p>
+                                    
                                     <p>{r.createdAt}</p>
                                 
                                 </div>
@@ -165,13 +179,10 @@ const ProductDetails = () => {
                                 <div style={{width:"125px" , height:"125px"}}key={r.id} className={r.reviewImage ? "" : "hidden"}>
                                 <img style={{width:"100%", objectFit:"cover"}} src={r.reviewImage} alt={product?.title} />
                                 </div>
-                                
-                                </ul>
-                                </div>
-                                </div>
+
                                 <div className="edit-delete-modal">
                                   {sessionUser && r?.userId === sessionUser.id && (
-                                <div className="review-btn">
+                                <div className="review-btn" style={{marginBottom:"3rem", marginTop:"5px"}}>
                                         <OpenModalButton
                                         buttonText="Edit Review"
                                         modalComponent={
@@ -180,6 +191,7 @@ const ProductDetails = () => {
                                         />
                                         <OpenModalButton
                                         buttonText="Delete Review"
+                                        
                                         modalComponent={
                                             <DeleteReview
                                             productId={productId}
@@ -192,6 +204,14 @@ const ProductDetails = () => {
 
                                   }  
                                 </div>
+      
+                                </ul>
+                                
+                                </div>
+                                
+
+                                </div>
+                                
                              
                             </div>
                         
@@ -200,13 +220,19 @@ const ProductDetails = () => {
                 </div>
                 ): (<div>Be the first to post a review!</div>)}
             </div>
-          <div className="right-side-container">
+            <div className="right-side-container">
+            <div>
             <h1>{product?.title}</h1>
-            <div className="star-right-side-container">{product?.reviews.length ? ` ${reviewAvg()}  ⭐` : ""}({reviewsLength()})</div>
-            <div className="price-detail">Price: ${product?.price}</div>
-            <div className="size-detail">Size: {product?.size}</div>
-            <div className="right-ship-return"><button>Free shipping & returns</button></div>
-            <div className="right-ship-return"><button>100% money-back guarantee</button></div>
+            { <p className="star-right-side-container">{product?.reviews.length ? ` ${reviewAvg()}  ⭐ ` : ""}({rightcontainerreviewsLength()})</p> }
+            </div>
+            <div>
+            <p className="price-detail">Price: ${product?.price}</p>
+            <p className="size-detail">Size: {product?.size}</p>
+            </div>
+            <div style={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
+            <p className="right-ship-return"><button><i class="fa-solid fa-check" />  Free shipping & returns  <i class="fa-regular fa-circle-question" /></button></p>
+            <p className="right-ship-return"><button><i class="fa-solid fa-check" />  100% money-back guarantee  <i class="fa-regular fa-circle-question" /></button></p>
+            </div>
         <div className="add-to-cart">
             
               { <button onClick={addToCart} className="add-to-cart-button">
@@ -214,7 +240,7 @@ const ProductDetails = () => {
               </button> }
               
         </div>
-        <div>
+        <div id="fav-in-page-detail">
               <FavoriteIcon
                 
                 sessionUser={sessionUser}
