@@ -18,10 +18,12 @@ const Sunglasses = () => {
     return (
       <div className="product-list-maincontainer">
         <div style={{display:"flex", flexDirection:"column",gap:"2rem"}}>
-        <img alt="Banner image" src="https://images.squarespace-cdn.com/content/v1/5b840c22b10598702dd21b3a/1585414034148-F3T2DVEZHS7MX9K7ZF9R/CMS_Peaker_0C8A7705-Edit+%281%29.jpg?format=2500w" className="bannerImage" />
+        <div style={{}}>
+        <img alt="Banner image" src="https://cdn.thewirecutter.com/wp-content/media/2021/07/cheapsunglaasses-2048px-6956.jpg?auto=webp&quality=75&crop=2:1&width=1024" className="bannerImage" />
+        </div>
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",gap:"1rem"}} className="homepage-text">
-          <p style={{fontSize:"28px"}}>A pair for every need.</p>
-          <p style={{fontSize:"20px"}}>Discover great glasses for both your day-to-day and the extraordinary.</p>
+          <p style={{fontSize:"28px"}}>Get your new summer shades.</p>
+          <p style={{fontSize:"20px"}}>Shop designer glasses on sale. Get up to 70% off your perfect pair of discount sunglasses.</p>
         </div>
         </div>
         

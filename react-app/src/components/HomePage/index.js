@@ -45,11 +45,12 @@ const HomePage = () => {
 		<div className='bottom-strip-container'>
 		
 				<ul>
-					<li>Free Shipping & Returns</li>
-					<li>100% Money Back Guarantee</li>
-					<li>FSA/HSA Eligible</li>
-					<li><i class="fa-solid fa-star"></i>Trustpilot rating</li>
-					<li>❇️ ❇️ ❇️ ❇️ ❇️ Excellent</li>
+					<li>Free Shipping & Returns</li><div style={{backgroundColor: "#b0bdc5", height: "18px",margin: "0 24px 0 26px", width: "2px"}}></div>
+					<li>100% Money Back Guarantee</li><div style={{backgroundColor: "#b0bdc5", height: "18px",margin: "0 24px 0 26px", width: "2px"}}></div>
+					<li>FSA/ HSA Eligible</li><div style={{backgroundColor: "#b0bdc5", height: "18px",margin: "0 24px 0 26px", width: "2px"}}></div>
+					<li><i class="fa-solid fa-star"></i>  Trustpilot . ❇️ ❇️ ❇️ ❇️ ❇️   Excellent</li>
+					{/* <li>❇️ ❇️ ❇️ ❇️ ❇️ Excellent</li>  */}
+					
 				</ul>
 		</div>
         <div className='brand-strip-container'>

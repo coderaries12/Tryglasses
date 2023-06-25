@@ -25,7 +25,7 @@ class Review(db.Model):
     product = db.relationship("Product", back_populates="reviews")
 
     def formatted_updatedAt(self):
-        return self.updatedAt.strftime('%B %d, %Y')
+        return self.updatedAt.strftime('%B %d, %Y') 
     
     def formatted_createdAt(self):
         return self.createdAt.strftime('%B %d, %Y')

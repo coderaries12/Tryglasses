@@ -33,7 +33,7 @@
 
 
 .bottom-strip-container{
-        padding: 10px 16px 0 60px; 
+        /* padding: 10px 16px 0 60px; 
         
         border:solid #d7ebfb 1px; 
         background-color:#e7f4fe;
@@ -42,24 +42,45 @@
         height: 100%;
         width:100%;
         margin: 0;
-        box-sizing: border-box; 
+        box-sizing: border-box;  */
+        background-color: #f4fafe;
+        display: flex;
+        height: 62px;
+        justify-content: center;
+        margin: auto;
+        max-width: 2000px;
     }
   .bottom-strip-container > ul{
-        display:flex;
+        /* display:flex;
         text-align: center;
         padding-top:0px;
         padding:0.5rem; 
         flex-direction: row; 
         color:black;
-        gap:2rem;
+        gap:2rem; */
         /* margin:0px; */
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        width: 1440px;
+        gap:4rem;
         
       }
     .bottom-strip-container > ul > li{
-        border-right: solid black 1px;
+        /* border-right: solid black 1px;
         padding-right:7rem;
-        font-size: 13px;
-      }
+        font-size: 13px; */
+        align-items: center;
+        display: inline-flex;
+        
+        flex-direction: row;
+        justify-content: center;
+        /* background-color: #b0bdc5;
+        height: 18px;
+        margin: 0 24px 0 26px;
+        width: 1px; */
+}
+      
 .fa-solid.fa-star{
     color:green;
     } 

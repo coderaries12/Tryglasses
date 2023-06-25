@@ -24,7 +24,7 @@ function Navigation({ isLoaded }){
 			<ul className={sessionUser? 'navigation': 'navigation nologin'}>
 				<li id="logo">
 					<NavLink exact to="/" style={{ textDecoration: "none" }}>
-				<div style={{width:"5rem"}}><img className='logo-image' src="https://res.cloudinary.com/dxrhf8ah9/image/upload/v1687303397/try-glasses_cjpukl.png" alt='logo' style={{display:"inline-block",height:"55px",padding:"0 55px" ,objectFit:"contain"}} /> </div>
+				<div style={{width:"5rem"}}><img className='logo-image' src="https://mail.google.com/mail/u/0?ui=2&ik=70b9322178&attid=0.0.1&permmsgid=msg-f:1769698184761440966&th=188f3b1f6e5bfac6&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ-iFChqLePpt43kNM65bSXnE4WnB-r1Emf3-xRTQozPJFm-SkQ41pAHBufPWZwFCmSRF_cYLghP1ZKOuHwZszHj3UOe8u1XR4UlstyLxSuPVCfMJc-ggmrWQ5g&disp=emb&realattid=ii_ljbqb9oq0" alt='logo' style={{display:"inline-block",height:"75px",objectFit:"contain"}} /> </div>
 					</NavLink>
 				</li>
 				<li>
