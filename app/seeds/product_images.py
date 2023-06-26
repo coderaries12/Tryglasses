@@ -253,6 +253,89 @@ def seed_product_images():
         productId=15,
         image="https://img.ebdcdn.com/product/frame/gray/lusmt01064_3.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
     )
+    productImage61 = ProductImage(
+        productId=16,
+        image="https://img.ebdcdn.com/product/frame/gray/luspl00906_0.jpg?im=Resize,width=280,height=140,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage62 = ProductImage(
+        productId=16,
+        image="https://img.ebdcdn.com/product/model/portrait/luspl00906_w0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage63 = ProductImage(
+        productId=16,
+        image="https://img.ebdcdn.com/product/frame/gray/luspl00906_2.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage64 = ProductImage(
+        productId=16,
+        image="https://img.ebdcdn.com/product/frame/gray/luspl00906_1.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage65 = ProductImage(
+        productId=17,
+        image="https://img.ebdcdn.com/product/model/portrait/spl8748_w0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage66 = ProductImage(
+        productId=17,
+        image="https://img.ebdcdn.com/product/model/portrait/spl8748_m0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage67 = ProductImage(
+        productId=17,
+        image="https://img.ebdcdn.com/product/frame/gray/spl8748_2.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage68 = ProductImage(
+        productId=17,
+        image="https://img.ebdcdn.com/product/frame/gray/spl8748_1.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage69 = ProductImage(
+        productId=18,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9021_w0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage70 = ProductImage(
+        productId=18,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9021_m0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage71 = ProductImage(
+        productId=18,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9021_2.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage72 = ProductImage(
+        productId=18,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9021_1.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage73 = ProductImage(
+        productId=19,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9027_w0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage74 = ProductImage(
+        productId=19,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9027_m0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage75 = ProductImage(
+        productId=19,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9027_2.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage76 = ProductImage(
+        productId=19,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9027_1.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage77 = ProductImage(
+        productId=20,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9083_w0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage78 = ProductImage(
+        productId=20,
+        image="https://img.ebdcdn.com/product/model/portrait/spl9083_m0.jpg?im=Resize,width=500,height=600,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage79 = ProductImage(
+        productId=20,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9083_2.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    productImage80 = ProductImage(
+        productId=20,
+        image="https://img.ebdcdn.com/product/frame/gray/spl9083_1.jpg?im=Resize,width=800,height=400,aspect=fill;UnsharpMask,sigma=1.0,gain=1.0&q=85"
+    )
+    
+    
+    
 
     
 
@@ -277,7 +360,11 @@ def seed_product_images():
     productImageId13 = [productImage49, productImage50, productImage51, productImage52]
     productImageId14 = [productImage53, productImage54, productImage55, productImage56]
     productImageId15 = [productImage57, productImage58, productImage59, productImage60]
-
+    productImageId16 = [productImage61, productImage62, productImage63, productImage64]
+    productImageId17 = [productImage65, productImage66, productImage67, productImage68]
+    productImageId18 = [productImage69, productImage70, productImage71, productImage72]
+    productImageId19 = [productImage73, productImage74, productImage75, productImage76]
+    productImageId20 = [productImage77, productImage78, productImage79, productImage80]
 
     productImages = [ productImageId1, 
                       productImageId2,
@@ -294,6 +381,12 @@ def seed_product_images():
                      productImageId13,
                      productImageId14, 
                      productImageId15,
+                     productImageId16,
+                     productImageId17,
+                     productImageId18,
+                     productImageId19,
+                     productImageId20, 
+                     
                     ]
     
     for item in productImages:

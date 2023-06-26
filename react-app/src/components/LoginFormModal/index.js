@@ -41,7 +41,7 @@ function LoginFormModal() {
         </ul>
         <label for="email">
           <input
-           placeholder="✉︎ Email address"
+           placeholder="Email address"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,9 @@ function LoginFormModal() {
           </label>
         <div className="login-button">
         <button type="submit" className="login-button">Continue</button>
+        
         <button className="demo-user" onClick={demouserhandleSubmit}>Demo User </button>
+       
         </div>
       </form>
     </div>

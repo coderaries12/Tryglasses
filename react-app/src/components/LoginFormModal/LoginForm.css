@@ -24,7 +24,7 @@
     margin: 10px;
     width: 400px;
     padding: 5px 20px 20px 20px;
-    border: 2px solid black;
+    border: 2px solid white; 
     border-radius: 25px 25px;
     height: 55%;
     background-color: white;
@@ -45,7 +45,8 @@
     justify-content: center;
     gap: 20px;
     font-size: large;
-    margin-bottom: 20px;
+    /* margin-top:10px; */
+    margin-bottom: 20px; 
 }
 
 .log-in-modal label {
@@ -75,16 +76,19 @@
     font-family: inherit;
     font-weight: 50px;
     background-color: #0097fb;
-    /* border-radius: 25px 25px; */
+    border-radius: 25px 25px; 
+    border:none;
     color: white;
-    font-size: 16px;
+    font-size: 16px;  
+       
 }
 
 .log-in-modal .demo-user {
     font-family: inherit;
+    text-decoration: underline;
     font-weight: 50px;
-    background-color: #0097fb;
-    color: white;
+    background-color: white;
+    color: #0097fb;
 }
 
 .log-in-modal button:hover {
@@ -94,3 +98,15 @@
 :disabled {
     background-color: rgb(222, 217, 217);
 }
+/* button.demo-user {
+    width: 330px;
+    height: 45px;
+    font-family: inherit;
+    font-weight: 50px;
+    /* background-color: white;
+    border-radius: 25px 25px; 
+    border:#0097fb; */
+    /* color: #0097fb;
+    font-size: 16px; 
+     */
+ 
