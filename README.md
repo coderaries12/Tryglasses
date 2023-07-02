@@ -6,10 +6,10 @@ Check out [Tryglasses](https://tryglasses.onrender.com/)
 
 ## Index
 
-[MVP Feature List](https://github.com/itsmaica/Remotebnb/wiki/Feature-List) |
-[Database Scheme](https://github.com/itsmaica/Remotebnb/wiki/Database-Schema) |
-[User Stories](https://github.com/itsmaica/Remotebnb/wiki/User-Stories) |
-[Wire Frames](https://github.com/itsmaica/Remotebnb/wiki/Wire-Frames) |
+[MVP Feature List](https://github.com/coderaries12/GlassesUSAclone/wiki) |
+[Database Scheme](https://github.com/coderaries12/GlassesUSAclone/wiki/Database-Schema) |
+[User Stories](https://github.com/coderaries12/GlassesUSAclone/wiki/User-Stories) |
+[Wire Frames](https://github.com/coderaries12/GlassesUSAclone/wiki/Wire-Frames) |
 
 ## Technologies Used
 
