@@ -9,7 +9,7 @@ Check out [Tryglasses](https://tryglasses.onrender.com/)
 [MVP Feature List](https://github.com/coderaries12/GlassesUSAclone/wiki) |
 [Database Scheme](https://github.com/coderaries12/GlassesUSAclone/wiki/Database-Schema) |
 [User Stories](https://github.com/coderaries12/GlassesUSAclone/wiki/User-Stories) |
-[Wire Frames](https://github.com/coderaries12/GlassesUSAclone/wiki/Wire-Frames) |
+[Wire Frames](https://github.com/coderaries12/GlassesUSAclone/wiki/Wireframes) |
 
 ## Technologies Used
 
