@@ -84,9 +84,33 @@ Logged-in Users can
 
 ## Future Features
 * More categories in terms of gender and brands
-* Live try-on camera 
+* Live try-on camera
+  
+
+## Endpoints
+| Request | Purpose | Return Value 
+--------- | ------- | ----------- 
+GET /api/auth/ | Fetches the current logged in user or returns null | { id: int, username: STRING, email: STRING } |
+POST /api/auth/login | Logs in user | { id: INT, username: STRING, email: STRING } |
+GET /api/auth/logout | Logsout user | {'message': 'User logged out'} |
+POST /api/auth/signup | Signs up user | { id: INT, username: STRING, email: STRING } |
+GET /api/eyeglasses | Get all eyeglasses collection | { id: INT, title: STRING, price: INT} |
+GET /api/sunglasses | Get all sunglasses collection | { id: INT, title: STRING, price: INT} |
+GET /api/products/:productId | Get individual detail of Product | { id: INT, userId: INT, title: STRING, price: INT, size: STRING, frameType: STRING, frameColor: STRING, frameMaterial: STRING, frameShape: STRING, previewImage: STRING, images: ARRAY, user: OBJECT, reviews: ARRAY, Description: STRING, type: STRING } |
+POST /api/products/:productId/reviews | create a review for a listing | { id: INT, productId: INT, userId: INT, reviewTitle: STRING, quality: STRING, fit: STRING, style: STRING, review: STRING, stars: INT, reviewImage: STRING }
+PUT /api/products/:productId/reviews/:reviewId | update a review | { id: INT, productId: INT, userId: INT, reviewTitle: STRING, quality: STRING, fit: STRING, style: STRING, review: STRING, stars: INT, reviewImage: STRING  }
+DELETE /api/products/:productId/reviews/:reviewId | delete a review | { "message": "Review succesfully deleted" }
+GET /api/favorites | Listing of favorite items of a user | { user_id: INT, product_id: INT, title: STRING, description: STRING, frameType: STRING, price: INT, previewImages: STRING, size: STRING, type: STRING,  }
+POST /api/users/:userId/favorites/products/:productId | Add the product to favorite collection | { id: INT, username: STRING, email: STRING, user_favorites: ARRAY }
+DELETE /api/users/:userId/favorites/products/:productId  | Remove the product from favorite | { id: INT, username: STRING, email: STRING, user_favorites: ARRAY  }
+GET /api/shoppingcart | Listing of items to shopping cart page | { userId: INT, productId: INT, title: STRING, description: STRING, frameType: STRING, price: INT, previewImages: STRING, size: STRING, type: STRING,  }
+POST /api/users/userId/cart/products/:productId/:value | Add the product to shopping cart | { sessionId:userId, productId: INT, quantity: INT }
+PUT /api/users/userId/cart/products/:productId/:cartId/:value | Edit the quantity of the product to shopping cart | {sessionId:userId, productId: INT, quantity: INT}
+DELETE /api/users/userId/cart/products/:productId/:cartId/:value | Delete the product from shopping cart | {sessionId:userId, productId: INT, quantity: INT }
 
 
+
+            
 
 
 
