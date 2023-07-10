@@ -1,0 +1,37 @@
+.noRoute_wrapper{
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+   
+    background-image: url("https://img.ebdcdn.com/image/upload/static/images/not-f-bg.jpg?q=85");
+    background-size: 100% 100%;
+    height :100vh;
+    /* height: 150vh;  */
+    flex-flow: column wrap;
+    /* margin: 40px auto; */
+    min-height: 440px;
+    position: relative;
+    
+}
+.noRoute_header{
+    margin-top: 5rem;
+    margin-left: 5rem;;
+    color:white;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-transform: none;
+    letter-spacing: 3px;
+    font-size: 36px;
+    font-weight: 700;
+}
+.oops{
+    color:white;
+    margin-left: 5rem;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    padding: 10px 8px 23px;
+    max-width: 350px;
+}

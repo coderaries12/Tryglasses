@@ -14,6 +14,7 @@ import ShoppingCartPage from "./components/ShoppingCartPage";
 import Footer from "./components/Footer";
 import FavoritePage from "./components/FavoritePage";
 import Sunglasses from "./components/Sunglasses";
+import PagenotFound from "./components/Page-not-found";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/products/:productId/review/:reviewId/edit" >
             <EditReview />
+          </Route>
+          <Route>
+            <PagenotFound />
           </Route>
           
         </Switch>

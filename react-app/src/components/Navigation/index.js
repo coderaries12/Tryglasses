@@ -1,12 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModal';
+import OpenModalButton from '../OpenModalButton';
 import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
+	const ulRef = useRef();
 	const sessionUser = useSelector(state => state.session.user);
+
+	const [showMenu, setShowMenu] = useState(false);
+
+	useEffect(() => {
+		if (!showMenu) return;
+	
+		const closeMenu = (e) => {
+		  if (!ulRef.current.contains(e.target)) {
+			setShowMenu(false);
+		  }
+		};
+	
+		document.addEventListener("click", closeMenu);
+	
+		return () => document.removeEventListener("click", closeMenu);
+	  }, [showMenu]);
+	
+	  const closeMenu = () => setShowMenu(false);
 
 	return (
 	<div className='headerContainer'>
@@ -53,9 +74,19 @@ function Navigation({ isLoaded }){
 					</li>
 				)}	
 				<li>
+				{!sessionUser ? (
+            <OpenModalButton
+              buttonText={
+                  <i className="fa-solid fa-cart-shopping fa-lg" />
+              }
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+           ) : (
 					<NavLink exact to= "/shoppingcart">
 						<i className="fa-solid fa-cart-shopping fa-lg" />
 					</NavLink>
+		   )}
 				</li> 
 			</ul>
 		</div>
