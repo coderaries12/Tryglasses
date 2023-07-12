@@ -26,6 +26,7 @@ class Product(db.Model):
 
     images = db.relationship("ProductImage", back_populates="product", cascade="all, delete-orphan")
     user = db.relationship("User", back_populates="products")
+    # orders = db.relationship("Order", back_populates="products")
     reviews = db.relationship("Review", back_populates="product", cascade="all, delete-orphan")
     cartItems = db.relationship("CartItem", back_populates="product", cascade="all, delete-orphan")
     

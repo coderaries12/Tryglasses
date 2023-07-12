@@ -14,6 +14,7 @@ class ShoppingSession(db.Model):
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     user = db.relationship("User", back_populates="cart_session")
+   
     cart = db.relationship("CartItem", back_populates="session", cascade="all, delete-orphan")
 
 
