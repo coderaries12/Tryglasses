@@ -13,7 +13,7 @@ class Order(db.Model):
     # shoppingSessionId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shopping_sessions.id')), nullable=False)
     fullName = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.Integer, nullable=False)
+    phone = db.Column(db.BigInteger, nullable=False)
     address = db.Column(db.String(1000), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
