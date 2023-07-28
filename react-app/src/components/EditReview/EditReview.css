@@ -72,6 +72,7 @@ h4{
     height: 45px;
     font-family: inherit;
     font-weight: 50px;
+    border: none;
     border-radius: 5px 5px;
     background-color: #0097fb;
     margin-top: 1rem;

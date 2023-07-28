@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import FavoritePage from "./components/FavoritePage";
 import Sunglasses from "./components/Sunglasses";
 import PagenotFound from "./components/Page-not-found";
+import PurchaseHistory from "./components/PurchaseHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,10 @@ function App() {
           <Route exact path="/sunglasses">
             <Sunglasses />
           </Route>
+          <Route exact path="/purchasehistory">
+            <PurchaseHistory />
+          </Route>
+
 
           <Route exact path="/products/:productId">
             <ProductDetails />
