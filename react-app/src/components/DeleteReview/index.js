@@ -1,18 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { thunkDeleteReview } from "../../store/products"
-import { useHistory } from "react-router-dom";
+
 import { useModal } from "../../context/Modal";
 import './DeleteReview.css'
 
 const DeleteReview = ({productId, reviewId}) => {
-    const history = useHistory()
+    
     const dispatch = useDispatch()
     const {closeModal} =  useModal();
 
     const handleSubmityes = async (e) => {
       e.preventDefault();
-      const deletedReview = await dispatch(thunkDeleteReview(productId, reviewId))
+      await dispatch(thunkDeleteReview(productId, reviewId))
       await closeModal()
     }
     const handleSubmitno = async (e) => {

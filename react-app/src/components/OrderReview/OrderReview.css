@@ -1,0 +1,17 @@
+.products-order{
+    width:65%;
+    
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    background-color: #fff;
+    padding:5rem;
+    /* justify-content: center;
+    align-items: center; */
+    gap: 4rem;  
+}
+.order-overall-total{
+    
+margin-top: 5rem;;
+}

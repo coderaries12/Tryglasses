@@ -11,8 +11,8 @@ def create_order():
     form['csrf_token'].data = request.cookies.get('csrf_token')
     if form.validate_on_submit():
         order = Order(
-            #userId=currentUserId,
-            userId=3,
+            userId=current_user.id,
+            # userId=3,
             fullName=form.data["fullName"],
             email=form.data["email"],
             phone=form.data["phone"],

@@ -5,12 +5,13 @@ import OpenModalButton from "../../components/OpenModalButton";
 import { useModal } from "../../context/Modal";
 import { thunkNewOrder } from "../../store/order";
 import EditOrder from "../EditOrder";
+import PurchaseHistory from "../OrderReview";
 import "./Order.css";
 
 const Order = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const neworderresult={}
+  
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -83,10 +84,10 @@ const Order = () => {
     setErrors(errors);
     
   }, [fullName, email, phone, address, city, state]);
-
+ let neworder
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const neworder = {
+    neworder = {
       
       fullName,
       email,
@@ -98,11 +99,15 @@ const Order = () => {
     };
     
     // console.log("inside the order comp", neworder)  
-    neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id ));
-    // console.log("inside the order function", neworderresult)
-    history.push("/purchasehistory")
+    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id ));
+    console.log("inside the order function", neworderresult)
+    // history.push("/purchasehistory")
+    if (neworderresult) {
+        history.push(`/orders/${neworderresult.id}`)
+      }
     closeModal();
  }
+ 
 
     return(
      <div className="review-modal">
@@ -187,7 +192,7 @@ const Order = () => {
           Edit Shipping Address
         </button> 
         </div> */}
-        <div className="createbutton-product"><OpenModalButton
+        {/* <div className="createbutton-product"><OpenModalButton
             buttonText="Edit Shipping Address"
             
             modalComponent={
@@ -196,14 +201,24 @@ const Order = () => {
               />
             }
             />
-        </div> 
+        </div>  */}
         {/* <div><a className="down-button" style={{backgroundColor:"#0097fb",color:"white",borderRadius:"5px 5px", marginTop:"1rem"}} to="/purchasehistory" href="purchasehistory">Review Order</a></div> */}
-        <div> 
+        
         <button
           className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
-          Submit
+          Review Order
         </button>
-      </div> 
+        {/* <div className="createbutton-product"><OpenModalButton
+            buttonText="Review Order"
+            
+            modalComponent={
+              <PurchaseHistory  
+              order={neworder}
+              />
+            }
+            />
+        </div>  */}
+      
     </form>
     </div>
   )

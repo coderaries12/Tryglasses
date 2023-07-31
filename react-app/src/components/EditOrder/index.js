@@ -3,22 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
+import { thunkEditOrder } from "../../store/order";
 import './EditOrder.css'
 
-const EditOrder = ({neworder}) => {
+const EditOrder = ({order}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
     const sessionUser = useSelector((state) => state.session.user);
   
-    const [fullName, setFullName] = useState(neworder?.fullName);
-    const [email, setEmail] = useState(neworder?.email);
-    const [phone, setPhone] = useState(neworder?.phone);
-    const [address, setAddress] = useState(neworder?.address);
-    const [city, setCity] = useState(neworder?.city);
-    const [state, setState] = useState(neworder?.state);
+    const [fullName, setFullName] = useState(order?.fullName);
+    const [email, setEmail] = useState(order?.email);
+    const [phone, setPhone] = useState(order?.phone);
+    const [address, setAddress] = useState(order?.address);
+    const [city, setCity] = useState(order?.city);
+    const [state, setState] = useState(order?.state);
     const [errors, setErrors] = useState({});
-    console.log("inside the order edit form", neworder)
+
+    console.log("inside the edit order", order)
+    
     const STATES = {
       AK: 'Alaska',
       AL: 'Alabama',
@@ -84,7 +87,7 @@ const EditOrder = ({neworder}) => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const editorder = {
-        ...neworder,
+        ...order,
         fullName,
         email,
         phone,
@@ -95,8 +98,9 @@ const EditOrder = ({neworder}) => {
       };
       
         
-      // let editedReview = await dispatch(thunkNewReview(newreview, product.id));
-      history.push("/purchasehistory")
+      let editedReview = await dispatch(thunkEditOrder(editorder, order.id));
+      console.log("inside the edit review", editedReview)
+      history.push(`/orders/${editedReview.id}`)
       closeModal();
    }
   
