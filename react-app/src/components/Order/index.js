@@ -14,7 +14,8 @@ const Order = () => {
   
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const cart_items =  useSelector((state) => state.session.user?.cart_session?.cart);
+  console.log("inside the order", cart_items)
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -22,6 +23,7 @@ const Order = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [errors, setErrors] = useState({});
+  
 
   const STATES = {
     AK: 'Alaska',
@@ -96,10 +98,11 @@ const Order = () => {
       city,
       state,
       
+      
     };
     
     // console.log("inside the order comp", neworder)  
-    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id ));
+    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id,  ));
     console.log("inside the order function", neworderresult)
     // history.push("/purchasehistory")
     if (neworderresult) {

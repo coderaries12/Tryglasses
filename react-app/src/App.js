@@ -16,6 +16,7 @@ import FavoritePage from "./components/FavoritePage";
 import Sunglasses from "./components/Sunglasses";
 import PagenotFound from "./components/Page-not-found";
 import OrderReview from "./components/OrderReview";
+import PurchaseHistory from "./components/PurchaseHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,10 @@ function App() {
           <Route exact path="/orders/:orderId">
             <OrderReview />
           </Route>
+          <Route exact path="/purchase-history">
+            <PurchaseHistory />
+          </Route>
+          
 
 
           <Route exact path="/products/:productId">

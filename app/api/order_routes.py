@@ -18,7 +18,8 @@ def create_order():
             phone=form.data["phone"],
             address=form.data["address"],
             city=form.data["city"],
-            state=form.data["state"]
+            state=form.data["state"],
+            
         )   
         db.session.add(order)
         
@@ -67,4 +68,4 @@ def delete_order(orderId):
     deleted_order = {'order': order.to_dict()}
     db.session.delete(order)
     db.session.commit()
-    return "Sucessfully Deleted"
+    return deleted_order
