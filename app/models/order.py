@@ -48,7 +48,7 @@ class Order(db.Model):
             # "cart": [cartItem.to_dict() for cartItem in self.cart],
             # "shoppingSessionId": self.shoppingSessionId,
             # "userId": self.userId,
-            # "user": self.user.to_dict(),
+             "user": self.user.to_dict(),
             # 'cart_session': self.cart_session.to_dict(),
             
             "createdAt": self.formatted_createdAt(),
