@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink, useHistory} from "react-router-dom";
+import { NavLink, useHistory} from "react-router-dom";
 import { fetchOrders } from "../../store/order";
 import { placeOrderThunk } from "../../store/session";
 import OpenModalButton from "../../components/OpenModalButton";
@@ -13,6 +13,7 @@ const PurchaseHistory = ({orderId}) => {
     console.log("inside the purchse history", orderId)
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    
     const allOrders = Object.values(useSelector((state) => state.order));
     const orders = allOrders.filter(order => order.userId == sessionUser.id);
     
@@ -45,10 +46,10 @@ const PurchaseHistory = ({orderId}) => {
         <div style={{minHeight:"62.7vh",marginLeft:"2rem"}}>
            <div className="cartpage-heading">
            <div className="fav-title">
-            {/* <p>Hello, {sessionUser.username}</p> */}
+            <p>Hello, {sessionUser.username}</p> 
         
             </div>
-           <div style={{fontSize:"26px",letterSpacing:".08em", marginBottom:"0.5rem" }}>Your order history</div>
+           <div style={{fontSize:"32px",letterSpacing:".08em", marginBottom:"0.5rem" }}>Your order history</div>
             <div style={{color:"#8d8d8d", font:"italic 16px/1 Georgia"}}>You can cancel items on preparing.</div>
            </div> 
             {
@@ -88,18 +89,18 @@ const PurchaseHistory = ({orderId}) => {
                     <div style={{borderBottom:"solid 1px"}}>
                     <div className={order.user?.cart_session?.cart.length === 0 ? "hidden":"product-in-order"}>
                     
-                    { order.user?.cart_session?.cart.map((ele, index) => (
-                    <div key={ele.product.id} style={{display:"flex",flexDirection:"row", gap:"1rem"}}>
+                    { order.orderProducts?.map((ele, index) => (
+                    <div key={ele.id} style={{display:"flex",flexDirection:"row", gap:"1rem"}}>
                     
                     <div style={{display:"flex",flexDirection:"row"}}>
                        <img
                           className="shopping-cart-image"
-                          src={ele.product.previewImage}
+                          src={ele.previewImage}
                           alt="products"
                         /> 
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Title: {ele.product.title}</div>
+                        <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Title: {ele.title}</div>
                         <div style={{fontSize:"18px"}}>Qty: {ele.quantity}</div>
                     </div>
                     </div>
@@ -113,9 +114,10 @@ const PurchaseHistory = ({orderId}) => {
                    )) 
                 
             }
+            <div className={orders.orderProducts?.length === 0 ? "hidden":"product-in-order"}></div>
             <div className="delete-div-order" style={{display:"block",justifyContent:"center",margin:"60px 0 0", width:"30%", gap:"1.5rem", marginLeft:"32rem"}}>
             <button onClick={checkout} 
-              style={{alignItems:"center"}}
+              style={{alignItems:"center", marginLeft:"7rem"}}
               className={sessionUser?.cart_session?.cart.length >= 1? "checkout-btn":"checkout-btn hidden"}>
                 Continue Shopping
             </button>

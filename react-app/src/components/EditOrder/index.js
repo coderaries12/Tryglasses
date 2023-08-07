@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
@@ -10,7 +10,7 @@ const EditOrder = ({order}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
-    const sessionUser = useSelector((state) => state.session.user);
+    
   
     const [fullName, setFullName] = useState(order?.fullName);
     const [email, setEmail] = useState(order?.email);

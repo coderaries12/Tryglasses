@@ -1,9 +1,10 @@
 from flask import Blueprint, jsonify, session, request, redirect
-from app.models import db, Order
+from app.models import db, Order, Product
 from flask_login import current_user, login_required
-from app.forms import OrderForm
+from app.forms import OrderForm, OrderHistoryForm
 
 order_routes = Blueprint('orders', __name__)
+
 
 @order_routes.route('/new', methods=["POST"])
 def create_order():
@@ -28,6 +29,43 @@ def create_order():
     
     if form.errors:
         print(form.errors)
+
+
+
+@order_routes.route('/<int:id>/order_products/products', methods=['PUT'])
+def add_product_order(id):
+    order = Order.query.get(id)
+    products = list()
+    for p in request.json:
+       # products.append(Product.query.get(p))
+        product = Product.query.get(p)
+        product.products.append(order)
+
+    db.session.commit()
+    return {'order': order.to_dict()}
+    
+# @order_routes.route('/<int:orderId>/history/new', methods=["POST"])
+# def create_orderhistory(orderId):
+#     form = OrderHistoryForm()
+#     form['csrf_token'].data = request.cookies.get('csrf_token')
+#     # print("----------------------------------------------------")
+#     if form.validate_on_submit():
+#         print("----------------------------------------------------",form.data["products"])   
+#         orderhistory = OrderHistoryForm(
+#             userId=current_user.id,
+#             orderId=orderId,
+#             # userId=3,
+#             products=form.data["products"],
+            
+            
+#         )   
+#         db.session.add(orderhistory)
+        
+#         db.session.commit()
+#         return {'orderhistory': orderhistory.to_dict()}
+    
+#     if form.errors:
+#         print(form.errors)
 
 @order_routes.route('/')
 def get_orders():

@@ -1,17 +1,17 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteOrder } from "../../store/order";
-import { useHistory } from "react-router-dom";
+
 import { useModal } from "../../context/Modal";
 import { placeOrderThunk } from "../../store/session";
-import { fetchOrders } from "../../store/order";
+
 import './DeleteOrder.css'
 
 const DeleteOrder = ({orderId}) => {
     
     const dispatch = useDispatch()
     const {closeModal} =  useModal();
-    const history = useHistory();
+    
     const sessionUser = useSelector((state) => state.session.user);
     console.log("inside the delete comp", orderId)
 

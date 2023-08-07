@@ -16,7 +16,7 @@ class ShoppingSession(db.Model):
     user = db.relationship("User", back_populates="cart_session")
    
     cart = db.relationship("CartItem", back_populates="session", cascade="all, delete-orphan")
-
+    # cart = db.relationship("CartItem", back_populates="session")
 
     def to_dict(self):
         return {

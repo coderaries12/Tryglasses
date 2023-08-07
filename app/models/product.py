@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 from.favorites import favorites
+from .order_products import order_products
 
 
 class Product(db.Model):
@@ -35,6 +36,12 @@ class Product(db.Model):
         secondary='favorites',
         back_populates="user_favorites",
     )
+    products = db.relationship(
+        "Order",
+        secondary='order_products',
+        back_populates="orderProducts",
+    )
+
 
     def to_dict(self):
         return {
@@ -72,5 +79,11 @@ class Product(db.Model):
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
        }
+    def to_dict_order_products(self):
+        return{
+           "id": self.id,
+            "title": self.title,
+            "previewImage": self.previewImage,
+        }
 
     

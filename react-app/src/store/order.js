@@ -2,6 +2,8 @@ const GET_ORDERS = "order/GET_ORDERS"
 const CREATE_ORDER = "order/CREATE_ORDER"
 const EDIT_ORDER = "order/EDIT_ORDER"
 const DELETE_ORDER = "order/DELETE_ORDER"
+const CREATE_ORDERHISTORY = "order/CREATE_ORDERHISTORY"
+const ADD_PRODUCT_ORDER = "session/ADD_PRODUCT_ORDER"
 
 
 const getOrder = (orders) => ({
@@ -20,6 +22,15 @@ const deleteOrder = (deleteOrder) => ({
     type: DELETE_ORDER,
     deleteOrder,
 })
+const createOrderHistory = (newOrderhistory) => ({
+    type:CREATE_ORDERHISTORY,
+    newOrderhistory
+})
+const addProductOrder = (updatedOrder) => ({
+	type: ADD_PRODUCT_ORDER,
+	updatedOrder
+})
+
 
 export const fetchOrders = () => async (dispatch) => {
     const res = await fetch("/api/orders")
@@ -48,6 +59,7 @@ export const thunkNewOrder = (order, currentUserId) => async (dispatch) => {
     return newOrderObj.order;  
 };
 
+
 export const thunkEditOrder = (editorder, editorderId) => async (dispatch) => {
     console.log("inside the edit thunk", editorder, editorderId)
     const response = await fetch(`/api/orders/${editorderId}`, {
@@ -75,6 +87,36 @@ export const thunkDeleteOrder = (orderId) => async (dispatch) => {
       return
     }
 }
+export const thunkNewOrderHistory = (orderId,orderhistory) => async (dispatch) => {
+    // console.log("inside the order thunk", order)
+    const response = await fetch(`/api/orders/${orderId}/history/new`,{
+        method:'POST',
+        headers:{ "Content-Type" : 'application/json' },
+        body: JSON.stringify(orderhistory)
+    })
+
+    let newOrderObj
+    if(response.ok) {
+        newOrderObj = await response.json();
+        await dispatch(createOrderHistory(newOrderObj.orderhistory))
+    } 
+    
+    return newOrderObj?.orderhistory;  
+};
+
+export const thunkProductOrder = (orderId, product_ids) => async (dispatch) => {
+	const response = await fetch(`/api/orders/${orderId}/order_products/products`,{
+        method:'PUT',
+        headers:{ "Content-Type" : 'application/json' },
+        body: JSON.stringify(product_ids)
+    })
+    if(response.ok) {
+        const updatedOrder = await response.json();
+        dispatch(addProductOrder(updatedOrder))
+        return updatedOrder;  
+    };
+}
+
 
 const initialState = {}
 const orderReducer = (state = initialState, action) => {
@@ -97,6 +139,12 @@ const orderReducer = (state = initialState, action) => {
         newState = { ...state }
         delete newState[action.deleteOrder.id]
         return newState
+        case CREATE_ORDERHISTORY:   
+        newState = { ...state }
+        newState[action.newOrderhistory.id] = action.newOrderhistory
+        return newState
+        case ADD_PRODUCT_ORDER:
+			  return { ...action.updatedOrder}
 
         default:
             return state;

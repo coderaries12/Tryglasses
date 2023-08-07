@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../components/OpenModalButton";
 import { useParams, NavLink, useHistory } from "react-router-dom"
 import EditOrder from "../EditOrder";
 
 
-import { fetchOrders } from "../../store/order";
+import { fetchOrders, thunkProductOrder } from "../../store/order";
 import "./OrderReview.css";
 
 
@@ -16,8 +16,9 @@ const OrderReview = ({cart}) => {
     const { orderId } = useParams()
     const sessionUser = useSelector((state) => state.session.user);
     const cart_array =  useSelector((state) => state.session.user?.cart_session?.cart);
+    
     const order = useSelector((state)=> state.order[orderId])
-    console.log("inside the order review", cart_array)
+    
     
 
     useEffect(() => {
@@ -25,7 +26,15 @@ const OrderReview = ({cart}) => {
       }, [dispatch]);
 
     
-    const handleSubmit = async () =>{
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        let product_ids=[]
+        for(cart of cart_array){
+          product_ids.push(cart.productId)
+        }
+        await dispatch(thunkProductOrder(orderId,product_ids))
+       
+            
         history.push('/purchase-history')
     }
     
@@ -85,19 +94,7 @@ const OrderReview = ({cart}) => {
                     
                     
                 ))}
-                    <div style={{display:"flex", flexDirection:"row", gap:"3rem"}}>
-                        
-                        {/* <div className="delete-div"><OpenModalButton
-                          buttonText="Cancel Order"
-                          modalComponent={
-                            <DeleteOrder  
-                            orderId={orderId}
-                            />
-                          }
-                          
-                            />
-                        </div> */}
-                    </div>
+                    
             
             </div>
             <div className="overall-total" style={{backgroundColor:"white", borderRadius:"8px", padding:"5rem"}}>

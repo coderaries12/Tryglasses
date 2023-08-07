@@ -29,10 +29,10 @@ const FavoriteIcon = ({sessionUser, product, onpagedetails}) => {
         }
 
         if(heartColor == "redheart"){
-            let deleteFav = await dispatch(thunkDeleteFav(product.id, sessionUser.id))
+            await dispatch(thunkDeleteFav(product.id, sessionUser.id))
             setHeartColor("")
         }else if(heartColor == ""){
-            let addtoFav = await dispatch(thunkAddFav(product?.id, sessionUser?.id))
+            await dispatch(thunkAddFav(product?.id, sessionUser?.id))
             setHeartColor("redheart")
         }
 

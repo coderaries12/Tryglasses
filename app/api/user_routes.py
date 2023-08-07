@@ -8,9 +8,9 @@ user_routes = Blueprint('users', __name__)
 def delete_cart(userId):
     print('in delete cart fn...')
     cart_session = ShoppingSession.query.get(userId)
-    cart_items = CartItem.query.filter(CartItem.sessionId == cart_session.id)
-    for cart_item in cart_items:
-        db.session.delete(cart_item)
+    # cart_items = CartItem.query.filter(CartItem.sessionId == cart_session.id)
+    # for cart_item in cart_items:
+    #     db.session.delete(cart_item)
     cart_session.total = 0
     db.session.commit()
     return cart_session.to_dict()

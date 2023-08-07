@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import OpenModalButton from "../../components/OpenModalButton";
+import { useHistory } from "react-router-dom";
+
 import { useModal } from "../../context/Modal";
-import { thunkNewOrder } from "../../store/order";
-import EditOrder from "../EditOrder";
-import PurchaseHistory from "../OrderReview";
+import { thunkNewOrder} from "../../store/order";
+
 import "./Order.css";
 
 const Order = () => {
@@ -100,16 +99,25 @@ const Order = () => {
       
       
     };
+    // const orderhistory={
+    //     products:cart_items
+    // }
+    
     
     // console.log("inside the order comp", neworder)  
-    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id,  ));
+    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id));
+
     console.log("inside the order function", neworderresult)
     // history.push("/purchasehistory")
     if (neworderresult) {
+        // await dispatch(thunkNewOrderHistory(neworderresult.id,orderhistory))
+        // neworderresult.cart=cart_items
         history.push(`/orders/${neworderresult.id}`)
       }
     closeModal();
  }
+
+ 
  
 
     return(
