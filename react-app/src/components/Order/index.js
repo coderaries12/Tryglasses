@@ -99,19 +99,16 @@ const Order = () => {
       
       
     };
-    // const orderhistory={
-    //     products:cart_items
-    // }
     
     
-    // console.log("inside the order comp", neworder)  
+    
+    
     const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id));
 
     console.log("inside the order function", neworderresult)
-    // history.push("/purchasehistory")
+    
     if (neworderresult) {
-        // await dispatch(thunkNewOrderHistory(neworderresult.id,orderhistory))
-        // neworderresult.cart=cart_items
+        
         history.push(`/orders/${neworderresult.id}`)
       }
     closeModal();
@@ -197,39 +194,13 @@ const Order = () => {
         </select>
         </div>
 
-        {/* <div>
-        <button
-          className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
-          Edit Shipping Address
-        </button> 
-        </div> */}
-        {/* <div className="createbutton-product"><OpenModalButton
-            buttonText="Edit Shipping Address"
-            
-            modalComponent={
-              <EditOrder  
-              order={neworderresult}
-              />
-            }
-            />
-        </div>  */}
-        {/* <div><a className="down-button" style={{backgroundColor:"#0097fb",color:"white",borderRadius:"5px 5px", marginTop:"1rem"}} to="/purchasehistory" href="purchasehistory">Review Order</a></div> */}
+        
         
         <button
           className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
           Review Order
         </button>
-        {/* <div className="createbutton-product"><OpenModalButton
-            buttonText="Review Order"
-            
-            modalComponent={
-              <PurchaseHistory  
-              order={neworder}
-              />
-            }
-            />
-        </div>  */}
-      
+        
     </form>
     </div>
   )
