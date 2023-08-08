@@ -24,3 +24,6 @@ a {
     position: relative;
     min-height: 100vh;
 }
+.content-container {
+    padding-bottom: 12.5rem;
+}

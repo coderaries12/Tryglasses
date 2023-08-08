@@ -1,17 +1,53 @@
-import React, {useEffect, useState, useRef} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState, useRef, useContext} from 'react';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import OpenModalButton from '../OpenModalButton';
 import './Navigation.css';
+import { SearchContext } from '../../context/SearchFilter';
 
 
 function Navigation({ isLoaded }){
 	const ulRef = useRef();
-	const sessionUser = useSelector(state => state.session.user);
+	const history = useHistory()
 
+	const sessionUser = useSelector(state => state.session.user);
+	const { products, setFilteredProducts, searchQuery, setSearchQuery } =
+    useContext(SearchContext)
 	const [showMenu, setShowMenu] = useState(false);
+	const [searchResults, setSearchResults] = useState([])
+
+	const handleSearchQueryChange = (e) => {
+		const query = e.target.value
+		setSearchQuery(query)
+	
+		if (query.trim() === "") {
+		  setSearchResults([])
+		  setFilteredProducts(products)
+		} else {
+		  const results = Object.values(products).filter((product) =>
+			product.title.toLowerCase().includes(query.toLowerCase())
+		  )
+		  setSearchResults(results)
+		  setFilteredProducts(results)
+		}
+	  }
+	
+	  const handleSearchResultClick = (product) => {
+		setSearchResults([])
+		setFilteredProducts(products)
+		setSearchQuery("")
+		history.push(`/products/${product.id}`)
+	  }
+	
+	  useEffect(() => {
+		history.listen(() => {
+		  setSearchResults([])
+		  setFilteredProducts(products)
+		  setSearchQuery("")
+		})
+	  }, [history])
 
 	useEffect(() => {
 		if (!showMenu) return;
@@ -57,11 +93,26 @@ function Navigation({ isLoaded }){
 
 				<li>
 					<form>
-						<input type='search' placeholder="I'm Searching For..." ></input>
-						<button disabled="True">
+						<input 
+						type='search' 
+						placeholder="I'm Searching For..."
+						value={searchQuery}
+						onChange={handleSearchQueryChange}></input>
+						<button disabled={true}>
 							<i className="fa-solid fa-magnifying-glass fa-xl" />
 						</button>
 					</form>
+					{searchResults.length > 0 && (
+						<ul className="search-results">
+							{searchResults.map((product) => (
+								<li
+								key={product.id}
+								onClick={() => handleSearchResultClick(product)}>
+								{product.name}
+								</li>
+							))}
+						</ul>
+          			)}
 				</li>
 				<li className={sessionUser? '':'hidden'}>
 					<NavLink exact to= "/favorites">
