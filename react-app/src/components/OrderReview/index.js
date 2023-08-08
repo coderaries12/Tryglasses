@@ -1,19 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../components/OpenModalButton";
-import { useParams, NavLink } from "react-router-dom"
+import { useParams, NavLink, useHistory } from "react-router-dom"
 import EditOrder from "../EditOrder";
 
 
+import { fetchOrders, thunkProductOrder } from "../../store/order";
 import "./OrderReview.css";
 
-const OrderReview = () => {
+
+const OrderReview = ({cart}) => {
     const dispatch = useDispatch();
+    const history = useHistory();
+  
     const { orderId } = useParams()
-    
     const sessionUser = useSelector((state) => state.session.user);
+    const cart_array =  useSelector((state) => state.session.user?.cart_session?.cart);
+    
     const order = useSelector((state)=> state.order[orderId])
     
+    
+
+    useEffect(() => {
+        dispatch(fetchOrders());
+      }, [dispatch]);
+
+    
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        let product_ids=[]
+        for(cart of cart_array){
+          product_ids.push(cart.productId)
+        }
+        await dispatch(thunkProductOrder(orderId,product_ids))
+       
+            
+        history.push('/purchase-history')
+    }
     
     const calculateTotal = (price, quantity) => {
         return (price * quantity).toFixed(2);
@@ -34,7 +57,7 @@ const OrderReview = () => {
   
 
     return(
-    <div style={{minHeight:"62.7vh", background:"#f6f6f6"}}>
+    <div style={{minHeight:"62.7vh", background:"#f6f6f6", marginLeft:"0.5rem"}}>
         <div>
         <div className="fav-title">
             <p>Review your Order</p>
@@ -58,7 +81,7 @@ const OrderReview = () => {
                         />
                       
                     </NavLink>
-                    <div className="item-in-shop-info">
+                    <div className="item-in-shop-info" style={{minWidth: "200px"}}>
                       <span style={{fontSize:"20px",fontWeight:"700"}}>{ele.product.title}</span>
                       <div>Price: $ {ele.product.price.toFixed(2)}</div>
                       <div>Quantity: {ele.quantity}</div>
@@ -71,24 +94,7 @@ const OrderReview = () => {
                     
                     
                 ))}
-                    <div style={{display:"flex", flexDirection:"row", gap:"3rem"}}>
-                        <div className="delete-div"><OpenModalButton
-                          buttonText="Edit Shipping Address"
-                          modalComponent={
-                            <EditOrder  
-                            order={order}
-                            />
-                          }
-                          
-                            />
-                        </div>
-                        <div className="delete-div"><OpenModalButton
-                          buttonText="Cancel Order"
-          
-                          
-                            />
-                        </div>
-                    </div>
+                    
             
             </div>
             <div className="overall-total" style={{backgroundColor:"white", borderRadius:"8px", padding:"5rem"}}>
@@ -114,9 +120,27 @@ const OrderReview = () => {
                 <p className="right-ship-return"><button><i class="fa-solid fa-check" />  100% money-back guarantee  <i class="fa-regular fa-circle-question" /></button></p>
               </div>
               
+               <div className="order-div"><OpenModalButton
+                          buttonText="Edit Shipping Address"
+                          modalComponent={
+                            <EditOrder  
+                            order={order}
+                            />
+                          }
+                          
+                            />
+                </div>
+            <div className="order-div">
+              <button
+                type="submit" onClick={handleSubmit} orderId={orderId}>
+                Place Order
+              </button> 
+            </div>
+              
           </div> 
             
-    </div>    
+    </div> 
+      
     </div>
     )
 }

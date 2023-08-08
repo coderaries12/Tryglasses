@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import OpenModalButton from "../../components/OpenModalButton";
+import { useHistory } from "react-router-dom";
+
 import { useModal } from "../../context/Modal";
-import { thunkNewOrder } from "../../store/order";
-import EditOrder from "../EditOrder";
-import PurchaseHistory from "../OrderReview";
+import { thunkNewOrder} from "../../store/order";
+
 import "./Order.css";
 
 const Order = () => {
@@ -14,7 +13,8 @@ const Order = () => {
   
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const cart_items =  useSelector((state) => state.session.user?.cart_session?.cart);
+  console.log("inside the order", cart_items)
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -22,6 +22,7 @@ const Order = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [errors, setErrors] = useState({});
+  
 
   const STATES = {
     AK: 'Alaska',
@@ -96,17 +97,24 @@ const Order = () => {
       city,
       state,
       
+      
     };
     
-    // console.log("inside the order comp", neworder)  
-    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id ));
+    
+    
+    
+    const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id));
+
     console.log("inside the order function", neworderresult)
-    // history.push("/purchasehistory")
+    
     if (neworderresult) {
+        
         history.push(`/orders/${neworderresult.id}`)
       }
     closeModal();
  }
+
+ 
  
 
     return(
@@ -186,39 +194,13 @@ const Order = () => {
         </select>
         </div>
 
-        {/* <div>
-        <button
-          className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
-          Edit Shipping Address
-        </button> 
-        </div> */}
-        {/* <div className="createbutton-product"><OpenModalButton
-            buttonText="Edit Shipping Address"
-            
-            modalComponent={
-              <EditOrder  
-              order={neworderresult}
-              />
-            }
-            />
-        </div>  */}
-        {/* <div><a className="down-button" style={{backgroundColor:"#0097fb",color:"white",borderRadius:"5px 5px", marginTop:"1rem"}} to="/purchasehistory" href="purchasehistory">Review Order</a></div> */}
+        
         
         <button
           className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
           Review Order
         </button>
-        {/* <div className="createbutton-product"><OpenModalButton
-            buttonText="Review Order"
-            
-            modalComponent={
-              <PurchaseHistory  
-              order={neworder}
-              />
-            }
-            />
-        </div>  */}
-      
+        
     </form>
     </div>
   )

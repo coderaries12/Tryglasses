@@ -16,6 +16,8 @@ import FavoritePage from "./components/FavoritePage";
 import Sunglasses from "./components/Sunglasses";
 import PagenotFound from "./components/Page-not-found";
 import OrderReview from "./components/OrderReview";
+import PurchaseHistory from "./components/PurchaseHistory";
+import { SearchFilter } from "./context/SearchFilter";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,8 @@ function App() {
 
   return (
     <>
+    <div className="content-container">
+      <SearchFilter>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -53,8 +57,9 @@ function App() {
           <Route exact path="/orders/:orderId">
             <OrderReview />
           </Route>
-
-
+          <Route exact path="/purchase-history">
+            <PurchaseHistory />
+          </Route>
           <Route exact path="/products/:productId">
             <ProductDetails />
           </Route>
@@ -70,6 +75,8 @@ function App() {
           
         </Switch>
       )}
+      </SearchFilter>
+      </div>
       
       <div className="footer-container">
         <Footer isLoaded={isLoaded} />

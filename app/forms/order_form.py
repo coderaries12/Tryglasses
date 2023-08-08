@@ -9,4 +9,5 @@ class OrderForm(FlaskForm):
     address = TextAreaField("Address", validators=[DataRequired()])
     city = StringField("City", validators=[DataRequired()])
     state = StringField("State", validators=[DataRequired()])
+   
     submit = SubmitField("Submit")

@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products"
-import { useHistory } from "react-router-dom";
+
 import OpenModalButton from "../../components/OpenModalButton";
 import DeleteShoppingCart from "../DeleteShoppingCart";
-import { placeOrderThunk } from "../../store/session";
-import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
+
+import { thunkUpdateCart } from "../../store/session";
 import Order from "../Order";
 
 import "./ShoppingCartPage.css"
@@ -15,7 +15,7 @@ import "./ShoppingCartPage.css"
 
 const ShoppingCartPage = ({product}) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    
     const sessionUser = useSelector((state) => state.session.user);
     const initialQuantities = sessionUser?.cart_session?.cart.map(
       (ele) => ele.quantity
@@ -26,23 +26,7 @@ const ShoppingCartPage = ({product}) => {
         dispatch(fetchProducts());
     }, [dispatch]);
 
-    // let value = 1;
-    //   const itemquantity = (product) => {
-    //     let checkproduct
-    //     checkproduct = sessionUser.cart_session.cart.find(
-    //             (ele) => ele.productId == product.id
-    //              );
-    //     value = document.getElementById("itemquantity").value;
-        
-    //     value = parseInt(parseInt(value) + checkproduct.quantity);
-    //           let cartId = checkproduct.id;
-              
-    //           dispatch(thunkUpdateCart(sessionUser, cartId, product, value)).then(
-    //           history.push("/shoppingcart")
-    //         );
-        
-
-    //   };
+    
 
     const handleQuantityChange = (index, newQuantity) => {
       const newQuantities = [...quantities];
@@ -147,18 +131,7 @@ const ShoppingCartPage = ({product}) => {
                           }
                     /></div>
                     </div>
-                    {/* <div className="delete-item-in-cart-btn" style={{display:"flex"}}>
-                      <OpenModalButton
-                    buttonText="Delete Item"
-                    modalComponent={
-                      <DeleteShoppingCart
-                        cartId={ele.id}
-                        productId={ele.product.id}
-                        sessionuserId={sessionUser.id}
-                      />
-                    }
-                    />
-                    </div> */}
+                    
                     </div>
                 ))}
             </div>
@@ -173,23 +146,15 @@ const ShoppingCartPage = ({product}) => {
                   <p style={{color:"#23aae2",fontSize:"54px",letterSpacing:".08em", marginTop:"2rem" }}>Shopping Cart is Empty</p>
                   <p style={{color:"#8d8d8d", fontFamily:"cursive",fontSize:"26px",letterSpacing:".08em", marginTop:"0.5rem", textAlign:"center" }}>You have no items in your shopping cart</p>
                   <div style={{display:"flex",justifyContent:"center"}}><NavLink className="down-button" style={{backgroundColor:"white",color:"#23aae2",border:"3px solid #6cf", borderRadius:"0px", width:"200px", alignItems:"center"}} exact to="/" href="eyeglasses">Shop </NavLink></div>
-                  {/* <NavLink exact to="/" style={{display:"inline-block",border:"solid", width:"7rem",height:"2rem",margin:"0.1px 80px",padding:"1px 1px", textAlign:"center"}}>Shop 🤓</NavLink>  */}
+                  
                   </div>
                 
               </div >
             
-            {/* <div style={{display:"block",justifyContent:"center",margin:"60px 0 0", width:"30%", gap:"1.5rem", marginLeft:"32rem"}}>
-            <button onClick={checkout} 
-              style={{alignItems:"center"}}
-              className={sessionUser?.cart_session?.cart.length >= 1? "checkout-btn":"checkout-btn hidden"}>
-                Proceed to checkout
-            </button>
-            </div> */}
+            
             
           <div className={sessionUser?.cart_session?.cart.length === 0 ? "hidden":"checkout"}>
-          {/* <div className="total-items">
-            {calculateTotalItems()} item(s) in your cart
-          </div> */}
+          
           <div className="overall-total">
               <div style={{display:"flex", flexDirection:"row", gap:"4.5rem", padding:"0px"}}>
                 <div>Subtotal ({calculateTotalItems()} item)</div>
@@ -214,16 +179,7 @@ const ShoppingCartPage = ({product}) => {
               </div>
               
           </div>
-          {/* <button
-            onClick={Order}
-            className={
-              sessionUser?.cart_session?.cart.length >= 1
-                ? "checkout-btn"
-                : "checkout-btn hidden"
-            }
-          >
-            Proceed to checkout
-          </button> */}
+          
 
         <div className={
               sessionUser?.cart_session?.cart.length >= 1

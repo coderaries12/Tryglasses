@@ -5,32 +5,38 @@ def seed_cart_items():
     cartItems1 = CartItem(
         sessionId=1,
         productId=3,
-        quantity=3
+        quantity=3,
+        
     )
     cartItems2 = CartItem(
         sessionId=2,
         productId=1,
-        quantity=2
+        quantity=2,
+        
     )
     cartItems3 = CartItem(
         sessionId=3,
         productId=4,
-        quantity=5
+        quantity=5,
+        
     )
     cartItems4 = CartItem(
         sessionId=1,
         productId=6,
-        quantity=2
+        quantity=2,
+        
     )
     cartItems5 = CartItem(
         sessionId=2,
         productId=5,
-        quantity=1
+        quantity=1,
+        
     )
     cartItems6 = CartItem(
         sessionId=3,
         productId=10,
-        quantity=5
+        quantity=5,
+        
     )
 
 

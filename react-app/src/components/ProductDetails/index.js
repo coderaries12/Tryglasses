@@ -8,7 +8,7 @@ import DeleteReview from "../DeleteReview";
 import { useParams, useHistory } from "react-router-dom";
 import ImageCarousel from "./ImageCarousel";
 import "./productdetail.css"
-import { thunkAddToCart, thunkUpdateCart } from "../../store/session";
+import { thunkAddToCart} from "../../store/session";
 import FavoriteIcon from "../FavoriteIcon";
 import ShoppingCartPage from "../ShoppingCartPage";
 
@@ -80,7 +80,7 @@ const ProductDetails = () => {
           window.alert("Please log in first");
         } else {
           
-          checkproduct = sessionUser.cart_session.cart.find(
+          checkproduct = sessionUser.cart_session?.cart.find(
             (ele) => ele.productId == product.id
           );
     
