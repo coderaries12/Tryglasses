@@ -35,6 +35,15 @@ Check out [Tryglasses](https://tryglasses.onrender.com/)
 ![favorite-page](https://github.com/coderaries12/GlassesUSAclone/assets/30429957/f360553e-ba49-4afe-af1a-30ed40dd4277)
 
 
+## Order Page
+![ezgif com-video-to-gif (1)](https://github.com/coderaries12/GlassesUSAclone/assets/30429957/dcd029a9-dfef-4b7f-9edf-9a589c95dd86)
+
+
+## Search Bar
+![search-bar-tryglasses](https://github.com/coderaries12/GlassesUSAclone/assets/30429957/d5630cc3-1c37-4dd6-8df9-a2e078b57af9)
+
+
+
 ## Getting started
 1. Clone this repository:
 
@@ -75,12 +84,24 @@ Logged-in Users can
 * Update the quantity of the product
 * List all products in there shopping cart
 * Delete/Cancel individual product
+
+## Order
+Logged-in Users can
+* Place a order
+* Update the shipping address in order
+* List all orders of logged-in users in purchase history page
+* Delete/Cancel individual order if order is in preparing state
   
 ## Favorite Cart
 Logged-in Users can
 * Add a product to its favorite collection by clicking heart icon on images
 * List all of their favorite products
 * Unlike their favorite products by clicking hear icon on images
+
+## Search Bar
+Logged-in Users can
+* Can search any product by typing in search bar and by clicking the product can go to product detail page
+
 
 ## Future Features
 * More categories in terms of gender and brands
@@ -107,6 +128,14 @@ GET /api/shoppingcart | Listing of items to shopping cart page | { userId: INT, 
 POST /api/users/userId/cart/products/:productId/:value | Add the product to shopping cart | { sessionId:userId, productId: INT, quantity: INT }
 PUT /api/users/userId/cart/products/:productId/:cartId/:value | Edit the quantity of the product to shopping cart | {sessionId:userId, productId: INT, quantity: INT}
 DELETE /api/users/userId/cart/products/:productId/:cartId/:value | Delete the product from shopping cart | {sessionId:userId, productId: INT, quantity: INT }
+POST /api/orders/new | Place the order | { id: INT, fullname: STRING, email: STRING, phone:INT,city: STRING, state: STRING  }
+GET /api/orders/:orderId | Listing of cart items to order review page | { cart_items: ARRAY, title: STRING, price: INT, previewImages: STRING  }
+PUT /api/orders/:orderId | Edit the shipping address to order | {orderId:INT, fullname: STRING, email: STRING, phone:INT,city: STRING, state: STRING }
+DELETE /api/orders/:orderId | Delete the order from purchase history page | {orderId:INT }
+GET /api/purchase-history | Listing of all orders placed by logged-in user | { order_number: INT, order_date: INT, order_status: STRING, title: INT, previewImages: STRING, price: INT  }
+
+
+
 
 
 
