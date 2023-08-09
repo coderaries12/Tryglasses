@@ -15,7 +15,7 @@ class Order(db.Model):
     # cartItemsId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('cart_items.id')), nullable=False)
     fullName = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.BigInteger, nullable=False)
+    phone = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(1000), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
