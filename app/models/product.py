@@ -83,6 +83,7 @@ class Product(db.Model):
         return{
            "id": self.id,
             "title": self.title,
+            "price": self.price,
             "previewImage": self.previewImage,
         }
 

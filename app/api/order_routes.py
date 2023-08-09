@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request, redirect
 from app.models import db, Order, Product
 from flask_login import current_user, login_required
-from app.forms import OrderForm, OrderHistoryForm
+from app.forms import OrderForm
 
 order_routes = Blueprint('orders', __name__)
 

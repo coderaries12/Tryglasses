@@ -21,7 +21,7 @@ function Navigation({ isLoaded }){
 	const handleSearchQueryChange = (e) => {
 		const query = e.target.value
 		setSearchQuery(query)
-	
+	    console.log("search results",query,searchResults)
 		if (query.trim() === "") {
 		  setSearchResults([])
 		  setFilteredProducts(products)
@@ -29,15 +29,19 @@ function Navigation({ isLoaded }){
 		  const results = Object.values(products).filter((product) =>
 			product.title.toLowerCase().includes(query.toLowerCase())
 		  )
+		  console.log("results",results)
 		  setSearchResults(results)
 		  setFilteredProducts(results)
 		}
+		console.log("search results",searchResults)
 	  }
 	
 	  const handleSearchResultClick = (product) => {
+		console.log("inside the nav ", product)
 		setSearchResults([])
 		setFilteredProducts(products)
 		setSearchQuery("")
+		console.log("inside the nav search bar", products)
 		history.push(`/products/${product.id}`)
 	  }
 	
@@ -108,7 +112,7 @@ function Navigation({ isLoaded }){
 								<li
 								key={product.id}
 								onClick={() => handleSearchResultClick(product)}>
-								{product.name}
+								{product.title}
 								</li>
 							))}
 						</ul>

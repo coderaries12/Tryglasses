@@ -87,22 +87,22 @@ export const thunkDeleteOrder = (orderId) => async (dispatch) => {
       return
     }
 }
-export const thunkNewOrderHistory = (orderId,orderhistory) => async (dispatch) => {
-    // console.log("inside the order thunk", order)
-    const response = await fetch(`/api/orders/${orderId}/history/new`,{
-        method:'POST',
-        headers:{ "Content-Type" : 'application/json' },
-        body: JSON.stringify(orderhistory)
-    })
+// export const thunkNewOrderHistory = (orderId,orderhistory) => async (dispatch) => {
+//     // console.log("inside the order thunk", order)
+//     const response = await fetch(`/api/orders/${orderId}/history/new`,{
+//         method:'POST',
+//         headers:{ "Content-Type" : 'application/json' },
+//         body: JSON.stringify(orderhistory)
+//     })
 
-    let newOrderObj
-    if(response.ok) {
-        newOrderObj = await response.json();
-        await dispatch(createOrderHistory(newOrderObj.orderhistory))
-    } 
+//     let newOrderObj
+//     if(response.ok) {
+//         newOrderObj = await response.json();
+//         await dispatch(createOrderHistory(newOrderObj.orderhistory))
+//     } 
     
-    return newOrderObj?.orderhistory;  
-};
+//     return newOrderObj?.orderhistory;  
+// };
 
 export const thunkProductOrder = (orderId, product_ids) => async (dispatch) => {
 	const response = await fetch(`/api/orders/${orderId}/order_products/products`,{

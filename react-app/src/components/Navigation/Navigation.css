@@ -207,3 +207,29 @@ button.signout-button{
   color: #0097fb;
   font-size: 14px;
 }
+
+.search-results {
+  position: absolute;  
+  /* top: 100%; */
+  z-index: 3;
+  /* width: 55%;  */
+  height: 240px; 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 0;
+  margin-top: 5px;
+  list-style: none;
+  overflow: auto;
+  transform: translateX(5%);  
+  
+}
+
+.search-results li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f5f5f5;
+}

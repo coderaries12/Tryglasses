@@ -101,6 +101,7 @@ const PurchaseHistory = ({orderId}) => {
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
                         <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Title: {ele.title}</div>
+                        <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Price: $ {ele.price.toFixed(2)}</div>
                         {/* <div style={{fontSize:"18px"}}>Qty: {ele.quantity}</div> */}
                     </div>
                     </div>
