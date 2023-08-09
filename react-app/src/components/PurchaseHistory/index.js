@@ -119,7 +119,7 @@ const PurchaseHistory = ({orderId}) => {
             <div className="delete-div-order" style={{display:"block",justifyContent:"center",margin:"60px 0 0", width:"30%", gap:"1.5rem", marginLeft:"32rem"}}>
             <button onClick={checkout} 
               style={{alignItems:"center", marginLeft:"7rem"}}
-              className={sessionUser?.cart_session?.cart.length >= 1? "checkout-btn":"checkout-btn hidden"}>
+              className={orders.length >= 1? "checkout-btn":"checkout-btn hidden"}>
                 Continue Shopping
             </button>
             </div>
