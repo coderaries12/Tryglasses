@@ -39,7 +39,7 @@ const FavoriteIcon = ({sessionUser, product, onpagedetails}) => {
     }
 
     return(
-        <button onClick={handleFavorite} className={heartColor} style={{border:"none"}}>
+        <button onClick={handleFavorite} className={heartColor} style={{border:"none", cursor:"pointer"}}>
             <i className={heartColor? "fa-solid fa-heart fa-lg":"fa-regular fa-heart fa-lg"} />
             <p className={onpagedetails? "":"hidden"}>
                 {heartColor? "Added to Collection":"Add to Collection"} 

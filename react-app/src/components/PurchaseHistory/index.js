@@ -10,7 +10,7 @@ import "./PurchaseHistory.css";
 const PurchaseHistory = ({orderId}) => {
     const history = useHistory();
     // const {orderId} = useParams()
-    console.log("inside the purchse history", orderId)
+    
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     
@@ -35,7 +35,7 @@ const PurchaseHistory = ({orderId}) => {
     
     orders.forEach(order =>{
         const daysAgo = ~~((new Date().getTime() - new Date(order.createdAt).getTime()) / 1000 / 60 / 60 / 24)
-        console.log("inside status function",daysAgo)
+        
         if(daysAgo <= 1) order.status= 'Preparing'
         else if(daysAgo > 1 && daysAgo <= 3) order.status= 'Shipped'
         else order.status= 'Delivered'
@@ -55,13 +55,14 @@ const PurchaseHistory = ({orderId}) => {
             {
                 !orders.length ? 
                 <div>
+                
                 <div style={{color:"#23aae2",fontSize:"54px",letterSpacing:".08em", marginTop:"3rem", textAlign:"center", marginBottom:"2rem" }}>No order placed yet</div> 
                 <div style={{display:"flex",justifyContent:"center"}}><NavLink className="down-button" style={{backgroundColor:"white",color:"#23aae2",border:"3px solid #6cf", borderRadius:"0px", width:"200px", alignItems:"center"}} exact to="/" href="eyeglasses">Shop </NavLink></div>
                 </div>:
                 
                    orders?.map((order) => (
                     <div>
-                    <div style={{display:"flex", flexDirection:"row", gap:"10rem", marginTop:"3rem"}}>
+                    <div style={{display:"flex", flexDirection:"row", gap:"11.5rem", marginTop:"3rem"}}>
                         <div style={{fontWeight:"bolder",fontSize:"20px",marginRight:"-150px"}}>Order# </div><span style={{fontSize:"20px"}}>{order.id} </span>
                         <div style={{fontWeight:"bolder",fontSize:"20px",marginRight:"-150px"}}>
                             Order Date:</div><span style={{fontSize:"20px"}}>{order.createdAt}</span>
@@ -100,7 +101,7 @@ const PurchaseHistory = ({orderId}) => {
                         /> 
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Title: {ele.title}</div>
+                        <div style={{fontSize:"18px",display:"flex",flexDirection:"row",marginBottom:"0.8rem"}}>Title: {ele.title}</div>
                         <div style={{fontSize:"18px",display:"flex",flexDirection:"row"}}>Price: $ {ele.price.toFixed(2)}</div>
                         {/* <div style={{fontSize:"18px"}}>Qty: {ele.quantity}</div> */}
                     </div>

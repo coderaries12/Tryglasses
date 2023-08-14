@@ -1,21 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products"
 
 import OpenModalButton from "../../components/OpenModalButton";
 import DeleteShoppingCart from "../DeleteShoppingCart";
-
+import FreeShippingReturn from "../FreeShipping&Return";
+import MoneyBackGuarantee from "../MoneyBackGuarantee";
 import { thunkUpdateCart } from "../../store/session";
 import Order from "../Order";
 
 import "./ShoppingCartPage.css"
 
+
 // import { placeOrderThunk } from "../../store/session";
 
 const ShoppingCartPage = ({product}) => {
     const dispatch = useDispatch();
-    
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const initialQuantities = sessionUser?.cart_session?.cart.map(
       (ele) => ele.quantity
@@ -40,6 +42,10 @@ const ShoppingCartPage = ({product}) => {
     const updateCartQuantity = (cartId, productId, newQuantity) => {
       dispatch(thunkUpdateCart(sessionUser.id, cartId, productId, newQuantity));
     };
+
+    const handleOrderHistory = async () =>{
+      history.push("/purchase-history")
+    }
 
       
 
@@ -75,6 +81,7 @@ const ShoppingCartPage = ({product}) => {
               <div className="fav-title">
                   <p>Shopping Cart</p>
                   <span style={{marginTop:"35px", marginLeft:"20px"}}>{sessionUser?.cart_session?.cart.length} ITEM IN CART</span>
+                <div className="delete-div" style={{marginTop:"-10px",marginLeft:"41rem"}}><button onClick={handleOrderHistory}>Order History</button></div>
                   
           </div>
             
@@ -140,10 +147,14 @@ const ShoppingCartPage = ({product}) => {
             {/* <div className="empty-cart"> */}
               
               <div className={sessionUser?.cart_session?.cart.length >= 1? "hidden":""}>
-                
+              <div className="fav-title">
+                  <p>Hello, {sessionUser.username}</p>
+                  
+                  <div className="delete-div" style={{marginTop:"-10px",marginLeft:"53rem"}}><button onClick={handleOrderHistory}>Order History</button></div>
+              </div>
                   <div style={{display:"flex",flexDirection:"column",alignContent:"center",gap:"1rem",textDecoration:"none"}}>
-                  <div style={{display:"flex",justifyContent:"center"}}><i className="fa-solid fa-cart-shopping fa-2xl" style={{color:"#23aae2"}} /></div>
-                  <p style={{color:"#23aae2",fontSize:"54px",letterSpacing:".08em", marginTop:"2rem" }}>Shopping Cart is Empty</p>
+                  <div style={{display:"flex",justifyContent:"center", marginTop:"4rem"}}><i className="fa-solid fa-cart-shopping fa-2xl" style={{color:"#23aae2"}} /></div>
+                  <p style={{color:"#23aae2",fontSize:"54px",letterSpacing:".08em", marginTop:"2rem", textAlign:"center" }}>Shopping Cart is Empty</p>
                   <p style={{color:"#8d8d8d", fontFamily:"cursive",fontSize:"26px",letterSpacing:".08em", marginTop:"0.5rem", textAlign:"center" }}>You have no items in your shopping cart</p>
                   <div style={{display:"flex",justifyContent:"center"}}><NavLink className="down-button" style={{backgroundColor:"white",color:"#23aae2",border:"3px solid #6cf", borderRadius:"0px", width:"200px", alignItems:"center"}} exact to="/" href="eyeglasses">Shop </NavLink></div>
                   
@@ -174,8 +185,34 @@ const ShoppingCartPage = ({product}) => {
                 <div>${calculateOverallTotal()-10} </div>
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
-                <p className="right-ship-return"><button><i class="fa-solid fa-check" />  Free shipping & returns  <i class="fa-regular fa-circle-question" /></button></p>
-                <p className="right-ship-return"><button><i class="fa-solid fa-check" />  100% money-back guarantee  <i class="fa-regular fa-circle-question" /></button></p>
+              <div className="right-ship-return" style={{cursor:"pointer"}}>
+              <i class="fa-solid fa-check" style={{color:"#00b16a",marginRight:"0.4rem"}} />
+              <OpenModalButton
+                          buttonText="Free shipping & returns"
+                          modalComponent={
+                            <FreeShippingReturn
+                            
+                            />
+                        }
+          
+                          
+                    />
+                  <i class="fa-regular fa-circle-question" style={{color:"#00b16a",marginLeft:"0.4rem"}}/>
+            </div>
+            <div className="right-ship-return">
+              <i class="fa-solid fa-check" style={{color:"#00b16a",marginRight:"0.4rem"}} />
+              <OpenModalButton
+                          buttonText="100% money-back guarantee"
+                          modalComponent={
+                            <MoneyBackGuarantee
+                            
+                            />
+                        }
+          
+                          
+                    />
+                  <i class="fa-regular fa-circle-question" style={{color:"#00b16a",marginLeft:"0.4rem"}}/>
+            </div>
               </div>
               
           </div>

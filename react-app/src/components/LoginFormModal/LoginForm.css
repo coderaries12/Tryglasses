@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    cursor:pointer;
     /* padding-top: 1px; */
 }
 
@@ -79,7 +80,8 @@
     border-radius: 25px 25px; 
     border:none;
     color: white;
-    font-size: 16px;  
+    font-size: 16px; 
+    cursor: pointer; 
        
 }
 
@@ -89,6 +91,7 @@
     font-weight: 50px;
     background-color: white;
     color: #0097fb;
+    
 }
 
 .log-in-modal button:hover {

@@ -11,6 +11,8 @@ import "./productdetail.css"
 import { thunkAddToCart} from "../../store/session";
 import FavoriteIcon from "../FavoriteIcon";
 import ShoppingCartPage from "../ShoppingCartPage";
+import FreeShippingReturn from "../FreeShipping&Return";
+import MoneyBackGuarantee from "../MoneyBackGuarantee";
 
 
 const ProductDetails = () => {
@@ -230,8 +232,35 @@ const ProductDetails = () => {
             <p className="size-detail">Size: {product?.size}</p>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
-            <p className="right-ship-return"><button><i class="fa-solid fa-check" />  Free shipping & returns  <i class="fa-regular fa-circle-question" /></button></p>
-            <p className="right-ship-return"><button><i class="fa-solid fa-check" />  100% money-back guarantee  <i class="fa-regular fa-circle-question" /></button></p>
+            
+            <div className="right-ship-return" style={{cursor:"pointer"}}>
+              <i class="fa-solid fa-check" style={{color:"#00b16a",marginRight:"0.4rem"}} />
+              <OpenModalButton
+                          buttonText="Free shipping & returns"
+                          modalComponent={
+                            <FreeShippingReturn
+                            
+                            />
+                        }
+          
+                          
+                    />
+                  <i class="fa-regular fa-circle-question" style={{color:"#00b16a",marginLeft:"0.4rem"}}/>
+            </div>
+            <div className="right-ship-return">
+              <i class="fa-solid fa-check" style={{color:"#00b16a",marginRight:"0.4rem"}} />
+              <OpenModalButton
+                          buttonText="100% money-back guarantee"
+                          modalComponent={
+                            <MoneyBackGuarantee
+                            
+                            />
+                        }
+          
+                          
+                    />
+                  <i class="fa-regular fa-circle-question" style={{color:"#00b16a",marginLeft:"0.4rem"}}/>
+            </div>
             </div>
         <div className="add-to-cart">
             

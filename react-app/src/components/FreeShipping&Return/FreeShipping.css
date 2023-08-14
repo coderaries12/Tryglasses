@@ -1,0 +1,52 @@
+.free-shipping-content > h4{
+    border-bottom: 1px solid #c8c8c8;
+    color: #2d2d2d;
+    font-size: 28px;
+    line-height: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}   
+.free-shipping-content{
+    padding: 36px 40px;
+    width: 500px;
+}
+.free-shipping-content > p{
+    color: #4d4d4d;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.free-shipping-maincontent{
+    position: absolute;
+    inset: 50% auto auto 50%;
+    border: none;
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 12px;
+    outline: none;
+    padding: 0px;
+    min-height: 52px;
+    max-height: 95vh;
+    max-width: 95vw;
+    font-family: Roboto;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    box-shadow: rgba(58, 72, 80, 0.34) 0px 3px 24px -2px;
+}
+.cross-modal{
+    width: 32px;
+    height: 32px;
+    padding: 0px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

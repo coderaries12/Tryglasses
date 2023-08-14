@@ -1,6 +1,6 @@
 #image-carousel .carousel-slider{
   height:450px ;
-  z-index: 10;
+  /* z-index: 10; */
   position: relative;
 }
 #image-carousel p.carousel-status{
@@ -195,6 +195,7 @@
     background-color: white;
     border:none;
     font-size: 16px;
+    cursor: pointer;
     
     /* text-decoration: underline ; */
 }

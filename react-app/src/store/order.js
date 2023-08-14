@@ -43,7 +43,7 @@ export const fetchOrders = () => async (dispatch) => {
   
 
 export const thunkNewOrder = (order, currentUserId) => async (dispatch) => {
-    // console.log("inside the order thunk", order)
+   
     const response = await fetch(`/api/orders/new`,{
         method:'POST',
         headers:{ "Content-Type" : 'application/json' },
@@ -61,7 +61,7 @@ export const thunkNewOrder = (order, currentUserId) => async (dispatch) => {
 
 
 export const thunkEditOrder = (editorder, editorderId) => async (dispatch) => {
-    console.log("inside the edit thunk", editorder, editorderId)
+    
     const response = await fetch(`/api/orders/${editorderId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

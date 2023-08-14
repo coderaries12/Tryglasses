@@ -60,7 +60,7 @@ function LoginFormModal() {
         <div className="login-button">
         <button type="submit" className="login-button">Continue</button>
         
-        <button className="demo-user" onClick={demouserhandleSubmit}>Demo User </button>
+        <button className="demo-user" style={{cursor:"pointer"}} onClick={demouserhandleSubmit}>Demo User </button>
        
         </div>
       </form>

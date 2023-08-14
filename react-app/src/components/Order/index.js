@@ -14,7 +14,7 @@ const Order = () => {
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
   const cart_items =  useSelector((state) => state.session.user?.cart_session?.cart);
-  console.log("inside the order", cart_items)
+  
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -105,7 +105,7 @@ const Order = () => {
     
     const neworderresult = await dispatch(thunkNewOrder(neworder,sessionUser.id));
 
-    console.log("inside the order function", neworderresult)
+    
     
     if (neworderresult) {
         
@@ -197,7 +197,7 @@ const Order = () => {
         
         
         <button
-          className="createbutton-product" type="submit"  disabled={!!Object.values(errors).length}>
+          className="createbutton-product" type="submit" style={{cursor:"pointer"}}  disabled={!!Object.values(errors).length}>
           Review Order
         </button>
         

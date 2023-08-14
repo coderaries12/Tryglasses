@@ -13,7 +13,7 @@ const DeleteOrder = ({orderId}) => {
     const {closeModal} =  useModal();
     
     const sessionUser = useSelector((state) => state.session.user);
-    console.log("inside the delete comp", orderId)
+    
 
     
 

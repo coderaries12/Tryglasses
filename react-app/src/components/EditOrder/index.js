@@ -20,7 +20,7 @@ const EditOrder = ({order}) => {
     const [state, setState] = useState(order?.state);
     const [errors, setErrors] = useState({});
 
-    console.log("inside the edit order", order)
+    
     
     const STATES = {
       AK: 'Alaska',
@@ -99,7 +99,7 @@ const EditOrder = ({order}) => {
       
         
       let editedReview = await dispatch(thunkEditOrder(editorder, order.id));
-      console.log("inside the edit review", editedReview)
+      
       history.push(`/orders/${editedReview.id}`)
       closeModal();
    }

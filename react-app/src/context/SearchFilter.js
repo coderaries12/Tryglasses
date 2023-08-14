@@ -12,8 +12,6 @@ export const SearchFilter = (props) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(products)
 
-//   console.log(products)
-//   console.log(filteredProducts)
 
   useEffect(() => {
     dispatch(fetchProducts())

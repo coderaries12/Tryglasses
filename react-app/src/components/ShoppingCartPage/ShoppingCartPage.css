@@ -97,6 +97,7 @@
     font-size: 16px;
     color: white;
     background-color: #0097fb;
+    cursor:pointer;
     /* border-radius: 30px 30px; */
 }
 
@@ -128,6 +129,8 @@
     width: 200px;
     align-items: center;
     padding:0.3rem 0.1rem;
+    cursor:pointer;
+    font-size: 18px;
     
 }
 .checkout{
