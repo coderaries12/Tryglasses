@@ -1,17 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteOrder } from "../../store/order";
-
 import { useModal } from "../../context/Modal";
 import { placeOrderThunk } from "../../store/session";
-
 import './DeleteOrder.css'
 
 const DeleteOrder = ({orderId}) => {
     
     const dispatch = useDispatch()
     const {closeModal} =  useModal();
-    
     const sessionUser = useSelector((state) => state.session.user);
     
 
