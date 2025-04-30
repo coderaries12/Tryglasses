@@ -25,9 +25,6 @@ const deleteReivew = (review) => ({
 
 
 
-
-
-
 //Thunk Action Creators
 export const fetchProducts = () => async (dispatch) => {
     const res = await fetch("/api/products")
@@ -82,8 +79,16 @@ export const thunkEditReview = (editreview, productId) => async (dispatch) => {
   }
 
 
-const initialState = {}
-const productsReducer = (state = initialState, action) => {
+
+const initialState = function(){
+    if(localStorage.getItem("localStorage")){
+        return JSON.parse(localStorage.getItem("localStorage"))
+    }
+    else{
+        return {}
+    }
+}
+const productsReducer = (state = initialState(), action) => {
     let newState = {}
     let productId
     let product
@@ -95,6 +100,8 @@ switch (action.type) {
         action.products.forEach(product => {
             newState[product.id] = product
         })
+        const localProducts = JSON.stringify(newState)
+        localStorage.setItem("localStorage", localProducts)
         return newState
     case CREATE_REVIEW:
         newState = { ...state }

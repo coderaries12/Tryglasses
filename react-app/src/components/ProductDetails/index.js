@@ -138,6 +138,8 @@ const ProductDetails = () => {
                         </div>
                 </div>    
             </div>
+            
+
             <div className="total-reviews">
                 <div className="reviews-length-star">
                     <div className="star">{product?.reviews.length ? ` ${reviewAvg()}  ⭐` : ""}</div>

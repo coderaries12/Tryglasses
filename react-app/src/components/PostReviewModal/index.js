@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkNewReview } from "../../store/products";
 import { useModal } from "../../context/Modal";
 import "./PostReview.css";
+//how can I add the star rating package
+
 
 const PostReviewModal = ({ product }) => {
   const dispatch = useDispatch();

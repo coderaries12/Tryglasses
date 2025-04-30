@@ -60,10 +60,22 @@ def create_review(productId):
             reviewImage=form.data["reviewImage"]
         )
         db.session.add(review)
+        # product_cache["products"][productId] = review
         db.session.commit()
         return {'review': review.to_dict()}
+    
+# // In memory cache
+product_cache = {"products":False}
+
 
 @product_routes.route('/')
 def get_products():
-    products = Product.query.all()
-    return {'products': [product.to_dict() for product in products]}
+    print(product_cache)
+    if(product_cache["products"]):
+        products = product_cache["products"]
+        return {'products': [product.to_dict() for product in products]}
+    else:
+        products = Product.query.all()
+        product_cache["products"] = products
+        return {'products': [product.to_dict() for product in products]}
+    
